@@ -1,0 +1,85 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+*.pyo
+*.so
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
+.coverage
+.coverage.*
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Node.js / frontend
+node_modules/
+frontend/node_modules/
+dist/
+build/
+coverage/
+*.tsbuildinfo
+vite.svg
+
+# IDEs and OS files
+.vscode/
+.idea/
+*.code-workspace
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Local caches
+.cache/
+**/.cache/
+
+# ML datasets and generated artifacts
+ml/data/raw/**
+!ml/data/raw/.gitkeep
+ml/data/processed/**
+!ml/data/processed/.gitkeep
+ml/models/**
+!ml/models/.gitkeep
+ml/reports/figures/**
+!ml/reports/figures/.gitkeep
+ml/reports/**/*.png
+ml/reports/**/*.jpg
+ml/reports/**/*.jpeg
+ml/reports/**/*.svg
+ml/reports/**/*.pdf
+ml/reports/**/*.html
+
+# Audio, model, and binary artifacts
+*.wav
+*.mp3
+*.flac
+*.ogg
+*.m4a
+*.npy
+*.npz
+*.pkl
+*.joblib
+*.h5
+*.keras
+*.onnx
+*.pt
+*.pth
+*.ckpt
