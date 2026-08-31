@@ -35,7 +35,7 @@ This setup uses TensorFlow on CPU in a native Windows environment. Zero detected
 
 Librosa is intentionally pinned to `0.11.0` because this project uses Python 3.11, while Librosa 1.0 requires Python 3.12 or newer.
 
-The official dataset source and the planned speaker-independent split strategy are documented in [docs/dataset-plan.md](C:\Users\olivia.dogbey.VOKACOM\Desktop\speech-emotion-recognition-system\docs\dataset-plan.md). The dataset has not been downloaded yet.
+The official dataset source and the planned speaker-independent split strategy are documented in [docs/dataset-plan.md](docs/dataset-plan.md).
 
 ## Proposed System Workflow
 
@@ -84,4 +84,4 @@ speech-emotion-recognition-system/
 
 ## Current Status
 
-The core ML and audio-processing environment has been installed and verified. The official dataset source and split strategy have been documented. No dataset has been downloaded, no model has been trained, and no backend or frontend application functionality has been implemented yet.
+The core ML and audio-processing environment has been installed and verified. The official RAVDESS speech archive has been downloaded and validated, remains ignored by Git, and has not been extracted or preprocessed. No model has been trained, and no backend or frontend application functionality has been implemented yet.

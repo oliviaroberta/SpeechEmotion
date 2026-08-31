@@ -19,12 +19,12 @@ The project deliberately uses the original official 48 kHz speech archive. Recor
 - DOI: `10.5281/zenodo.1188976`
 - Selected archive filename: `Audio_Speech_Actors_01-24.zip`
 - Archive size: `208.5 MB` as shown on the official Zenodo record page
-- Archive size in bytes: exact byte count could not be retrieved in this environment on August 15, 2026 because the official Zenodo API endpoint was unreachable here; this should be rechecked from the official endpoint before download
-- MD5 checksum: `bc696df654c87fed845eb13823edef8a`
+- Archive size in bytes: `208,468,073` (downloaded and verified on August 31, 2026)
+- MD5 checksum: `bc696df654c87fed845eb13823edef8a` (verified after download)
 - Official download URL: `https://zenodo.org/records/1188976/files/Audio_Speech_Actors_01-24.zip?download=1`
 - Date metadata was verified: August 15, 2026
 
-Only the official Zenodo record was used for these metadata values. The inaccessible exact byte count is the only field still needing direct API confirmation in a network-permitted environment.
+Only the official Zenodo record was used for these metadata values.
 
 ## 3. Licence and Permitted Use
 
@@ -154,7 +154,7 @@ ml/data/raw/ravdess/
 
 The archive file and all extracted audio contents are intended to remain ignored by Git.
 
-This planning step does not create the archive file or the 24 actor directories.
+The official archive was downloaded on August 31, 2026 and retained at `ml/data/raw/ravdess/archive/Audio_Speech_Actors_01-24.zip`. Its MD5 matches the official checksum, ZIP CRC validation passed, and inspection found 1,440 WAV entries across 24 actors. The archive remains ignored by Git and has not been extracted.
 
 ## 8. Planned Preprocessing
 
