@@ -219,3 +219,43 @@ The following checks must be completed in the next step after download:
 - all audio files can be read
 - raw files remain unmodified
 - dataset contents remain untracked by Git
+
+## 12. Extraction and Audio Inspection Status
+
+Extraction and inspection were completed on August 31, 2026.
+
+- Extraction destination: `ml/data/raw/ravdess/extracted/`
+- The archive was safely extracted through a temporary sibling directory and promoted to the final destination only after all expected files were written and validated.
+- The original ZIP remains unchanged and its MD5 is still `bc696df654c87fed845eb13823edef8a`.
+- ZIP CRC validation passed before extraction and again after audio inspection.
+- The extracted dataset contains 24 actor directories, 1,440 readable WAV files, and 60 recordings per actor.
+- All raw audio files remain ignored by Git.
+
+### Verified Audio Properties
+
+Every recording was opened and read in full in chunks without rewriting it. All 1,440 files are WAV, 48,000 Hz, and `PCM_16` (16-bit PCM), with a positive frame count and duration. The original official archive has a mixed channel layout:
+
+- Mono files: 1,435
+- Stereo files: 5
+- Channel distribution by statement: statement `01` has 718 mono and 2 stereo files; statement `02` has 717 mono and 3 stereo files.
+- Channel distribution by actor: `Actor_01` has 58 mono and 2 stereo files; `Actor_05` has 59 mono and 1 stereo file; `Actor_20` has 58 mono and 2 stereo files; every other actor has 60 mono files.
+- Channel distribution by emotion: neutral 96 mono; calm 190 mono and 2 stereo; happy 191 mono and 1 stereo; sad 192 mono; angry 192 mono; fearful 191 mono and 1 stereo; disgust 192 mono; surprised 191 mono and 1 stereo.
+
+For the five stereo files, the left and right channels are bit-identical. No stereo file had differing channels, and the maximum absolute left-versus-right sample difference was `0`. This comparison was diagnostic only; no channel conversion or other audio modification occurred.
+
+### Duration Statistics
+
+Overall duration in seconds: minimum `2.936271`, maximum `5.271937`, mean `3.700665`, median `3.670333`, total `5328.957333`.
+
+Per-emotion duration statistics in seconds:
+
+- Neutral: minimum `3.069729`, maximum `4.137458`, mean `3.503153`, median `3.503500`
+- Calm: minimum `2.936271`, maximum `4.771438`, mean `3.795806`, median `3.770437`
+- Happy: minimum `3.103104`, maximum `4.404396`, mean `3.638183`, median `3.620281`
+- Sad: minimum `3.103104`, maximum `4.738062`, mean `3.694490`, median `3.670333`
+- Angry: minimum `3.236562`, maximum `5.105104`, mean `3.871404`, median `3.837167`
+- Fearful: minimum `3.069729`, maximum `5.005000`, mean `3.574231`, median `3.553552`
+- Disgust: minimum `3.136458`, maximum `5.271937`, mean `3.941785`, median `3.903896`
+- Surprised: minimum `2.969625`, maximum `4.637979`, mean `3.487512`, median `3.503500`
+
+No preprocessing has occurred. In particular, the raw recordings have not been downmixed, resampled, trimmed, normalised, padded, or used for feature extraction. A consistent mono conversion is planned for a later preprocessing step.
