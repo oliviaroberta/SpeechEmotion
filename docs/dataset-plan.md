@@ -259,3 +259,33 @@ Per-emotion duration statistics in seconds:
 - Surprised: minimum `2.969625`, maximum `4.637979`, mean `3.487512`, median `3.503500`
 
 No preprocessing has occurred. In particular, the raw recordings have not been downmixed, resampled, trimmed, normalised, padded, or used for feature extraction. A consistent mono conversion is planned for a later preprocessing step.
+
+## 13. Deterministic Metadata Manifest and Speaker-Independent Split
+
+The following tracked, portable outputs were generated without copying or modifying audio:
+
+- `ml/metadata/ravdess_manifest.csv`
+- `ml/metadata/ravdess_split_summary.json`
+
+The CSV has one row per recording and uses this exact schema:
+
+`relative_path, filename, modality_id, vocal_channel_id, emotion_id, emotion, intensity_id, intensity, statement_id, repetition_id, actor_id, gender, split, sample_rate, channels, subtype, frames, duration_seconds`
+
+All paths are repository-relative, use forward slashes, and contain no local Windows path. Duration values are stored to six decimal places. The generated JSON has stable key ordering, fixed indentation, no timestamp, and no environment-specific information.
+
+### Completed Actor Split
+
+- Train: actors `01-16`, 16 actors, 960 recordings, 480 male and 480 female, 957 mono and 3 stereo.
+- Validation: actors `17-20`, 4 actors, 240 recordings, 120 male and 120 female, 238 mono and 2 stereo.
+- Test: actors `21-24`, 4 actors, 240 recordings, 120 male and 120 female, 240 mono and 0 stereo.
+
+Each split has the expected emotion distribution: neutral has 64 train recordings and 16 validation/test recordings; every other emotion has 128 train recordings and 32 validation/test recordings. Intensity counts are train normal 512/strong 448, validation normal 128/strong 112, and test normal 128/strong 112.
+
+Split intersections are empty: train/validation, train/test, and validation/test share no actor IDs. Split assignment uses only actor identity, never file-level randomisation or recording properties. This prevents the model from receiving recordings from the same speaker during training and evaluation: test voices are absent from train and validation, and validation voices are absent from train and test.
+
+The manifest and summary were rebuilt and independently verified twice with identical SHA-256 hashes:
+
+- `ravdess_manifest.csv`: `079884EA3724C1ADAB1C53E33D9EB669B58FCC58E4F577379BBFF807A46C398D`
+- `ravdess_split_summary.json`: `5020FC97D7061A113B399A292653B393645DCA7DEDCB283544A9EF55EE23D19C`
+
+The generated manifest summary uses six-decimal duration values from the CSV, so its aggregate total is `5328.957256` seconds. The direct raw-audio inspection total remains documented above. No preprocessing or model training has occurred. Neutral remains underrepresented in every split; class-imbalance handling will be decided during modelling without modifying the test distribution.

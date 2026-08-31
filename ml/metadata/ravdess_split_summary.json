@@ -1,0 +1,163 @@
+{
+  "overall": {
+    "channel_counts": {
+      "mono": 1435,
+      "stereo": 5
+    },
+    "duration_seconds": {
+      "maximum": 5.271937,
+      "mean": 3.700665,
+      "median": 3.670333,
+      "minimum": 2.936271,
+      "total": 5328.957256
+    },
+    "emotion_counts": {
+      "angry": 192,
+      "calm": 192,
+      "disgust": 192,
+      "fearful": 192,
+      "happy": 192,
+      "neutral": 96,
+      "sad": 192,
+      "surprised": 192
+    },
+    "gender_counts": {
+      "female": 720,
+      "male": 720
+    },
+    "intensity_counts": {
+      "normal": 768,
+      "strong": 672
+    }
+  },
+  "splits": {
+    "test": {
+      "actor_count": 4,
+      "actor_ids": [
+        "21",
+        "22",
+        "23",
+        "24"
+      ],
+      "channel_counts": {
+        "mono": 240,
+        "stereo": 0
+      },
+      "duration_seconds": {
+        "maximum": 5.105104,
+        "mean": 3.803105,
+        "median": 3.75375,
+        "minimum": 3.103104
+      },
+      "emotion_counts": {
+        "angry": 32,
+        "calm": 32,
+        "disgust": 32,
+        "fearful": 32,
+        "happy": 32,
+        "neutral": 16,
+        "sad": 32,
+        "surprised": 32
+      },
+      "gender_counts": {
+        "female": 120,
+        "male": 120
+      },
+      "intensity_counts": {
+        "normal": 128,
+        "strong": 112
+      },
+      "recording_count": 240
+    },
+    "train": {
+      "actor_count": 16,
+      "actor_ids": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06",
+        "07",
+        "08",
+        "09",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16"
+      ],
+      "channel_counts": {
+        "mono": 957,
+        "stereo": 3
+      },
+      "duration_seconds": {
+        "maximum": 5.005,
+        "mean": 3.661714,
+        "median": 3.636969,
+        "minimum": 2.936271
+      },
+      "emotion_counts": {
+        "angry": 128,
+        "calm": 128,
+        "disgust": 128,
+        "fearful": 128,
+        "happy": 128,
+        "neutral": 64,
+        "sad": 128,
+        "surprised": 128
+      },
+      "gender_counts": {
+        "female": 480,
+        "male": 480
+      },
+      "intensity_counts": {
+        "normal": 512,
+        "strong": 448
+      },
+      "recording_count": 960
+    },
+    "validation": {
+      "actor_count": 4,
+      "actor_ids": [
+        "17",
+        "18",
+        "19",
+        "20"
+      ],
+      "channel_counts": {
+        "mono": 238,
+        "stereo": 2
+      },
+      "duration_seconds": {
+        "maximum": 5.271937,
+        "mean": 3.754029,
+        "median": 3.670333,
+        "minimum": 3.06975
+      },
+      "emotion_counts": {
+        "angry": 32,
+        "calm": 32,
+        "disgust": 32,
+        "fearful": 32,
+        "happy": 32,
+        "neutral": 16,
+        "sad": 32,
+        "surprised": 32
+      },
+      "gender_counts": {
+        "female": 120,
+        "male": 120
+      },
+      "intensity_counts": {
+        "normal": 128,
+        "strong": 112
+      },
+      "recording_count": 240
+    }
+  },
+  "total_actor_count": 24,
+  "total_recording_count": 1440
+}
