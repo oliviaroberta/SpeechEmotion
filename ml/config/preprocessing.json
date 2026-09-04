@@ -1,0 +1,19 @@
+{
+  "configuration_version": "1.0.0",
+  "frame_length": 2048,
+  "hard_clipping_enabled": false,
+  "output_dtype": "float32",
+  "output_shape": [56000],
+  "per_file_normalization_enabled": false,
+  "processed_pcm_exported": false,
+  "resample_method": "soxr_hq",
+  "silence_top_db": 40,
+  "stereo_to_mono": "arithmetic_mean",
+  "target_duration_seconds": 3.5,
+  "target_length_samples": 56000,
+  "target_sample_rate": 16000,
+  "trim_hop_length": 512,
+  "truncation": "maximum_energy_window_earliest_tie",
+  "zero_padding": "symmetric_odd_sample_at_end",
+  "preserve_finite_float_overshoots": true
+}
