@@ -1,0 +1,154 @@
+{
+  "configuration_sha256": "554cf6c37af50981d4e19f3bfb1e4072c510d96574a763ff1798b9e274a70410",
+  "examples": [
+    {
+      "emotion": "neutral",
+      "image_path": "ml/reports/figures/feature_preview/neutral_preview.png",
+      "image_sha256": "ee460bfab1d0a7a8977e679eaec78b1ab9fa923943ef0f7c5611dfcda39e402d",
+      "mel_shape": [
+        64,
+        219
+      ],
+      "mfcc_shape": [
+        13,
+        219
+      ],
+      "relative_path": "ml/data/raw/ravdess/extracted/Actor_01/03-01-01-01-01-01-01.wav",
+      "waveform_shape": [
+        56000
+      ]
+    },
+    {
+      "emotion": "calm",
+      "image_path": "ml/reports/figures/feature_preview/calm_preview.png",
+      "image_sha256": "a1f984964a1b6c2934b9a38cadbb467f6b4d94a00b5df4218feadd71a917b27b",
+      "mel_shape": [
+        64,
+        219
+      ],
+      "mfcc_shape": [
+        13,
+        219
+      ],
+      "relative_path": "ml/data/raw/ravdess/extracted/Actor_01/03-01-02-01-01-01-01.wav",
+      "waveform_shape": [
+        56000
+      ]
+    },
+    {
+      "emotion": "happy",
+      "image_path": "ml/reports/figures/feature_preview/happy_preview.png",
+      "image_sha256": "1082359e181cc414a6a378c3de700fd9ca23d6fa239d4c5f0d1ad2010984f401",
+      "mel_shape": [
+        64,
+        219
+      ],
+      "mfcc_shape": [
+        13,
+        219
+      ],
+      "relative_path": "ml/data/raw/ravdess/extracted/Actor_01/03-01-03-01-01-01-01.wav",
+      "waveform_shape": [
+        56000
+      ]
+    },
+    {
+      "emotion": "sad",
+      "image_path": "ml/reports/figures/feature_preview/sad_preview.png",
+      "image_sha256": "df48f96510ddd63fd32cbe2080584e67f1c739d45403ad7852b5581f84d7549d",
+      "mel_shape": [
+        64,
+        219
+      ],
+      "mfcc_shape": [
+        13,
+        219
+      ],
+      "relative_path": "ml/data/raw/ravdess/extracted/Actor_01/03-01-04-01-01-01-01.wav",
+      "waveform_shape": [
+        56000
+      ]
+    },
+    {
+      "emotion": "angry",
+      "image_path": "ml/reports/figures/feature_preview/angry_preview.png",
+      "image_sha256": "439ad8207eb32f54000e9708da86b2c56c309a3d9862ffd14781739ac6883f73",
+      "mel_shape": [
+        64,
+        219
+      ],
+      "mfcc_shape": [
+        13,
+        219
+      ],
+      "relative_path": "ml/data/raw/ravdess/extracted/Actor_01/03-01-05-01-01-01-01.wav",
+      "waveform_shape": [
+        56000
+      ]
+    },
+    {
+      "emotion": "fearful",
+      "image_path": "ml/reports/figures/feature_preview/fearful_preview.png",
+      "image_sha256": "bb9895541247551b2ea4a4f8f428dc5706e898efa4615d08f335421342dcf0e7",
+      "mel_shape": [
+        64,
+        219
+      ],
+      "mfcc_shape": [
+        13,
+        219
+      ],
+      "relative_path": "ml/data/raw/ravdess/extracted/Actor_01/03-01-06-01-01-01-01.wav",
+      "waveform_shape": [
+        56000
+      ]
+    },
+    {
+      "emotion": "disgust",
+      "image_path": "ml/reports/figures/feature_preview/disgust_preview.png",
+      "image_sha256": "69d2672ad7d10da5ed9440d4a32fb98bbb6f8ec4fbee6acbd6d0a8c72f064c39",
+      "mel_shape": [
+        64,
+        219
+      ],
+      "mfcc_shape": [
+        13,
+        219
+      ],
+      "relative_path": "ml/data/raw/ravdess/extracted/Actor_01/03-01-07-01-01-01-01.wav",
+      "waveform_shape": [
+        56000
+      ]
+    },
+    {
+      "emotion": "surprised",
+      "image_path": "ml/reports/figures/feature_preview/surprised_preview.png",
+      "image_sha256": "26af3b90e0ab5b7f4ece8d07a6491b74141e7ef42139cd87acb54fd7edc7dbc1",
+      "mel_shape": [
+        64,
+        219
+      ],
+      "mfcc_shape": [
+        13,
+        219
+      ],
+      "relative_path": "ml/data/raw/ravdess/extracted/Actor_01/03-01-08-01-01-01-01.wav",
+      "waveform_shape": [
+        56000
+      ]
+    }
+  ],
+  "overview_path": "ml/reports/figures/feature_preview/mel_spectrogram_overview.png",
+  "overview_sha256": "5b61c44913bdfc72fbe762d1451cec365c666f4163d7b9b228318c1fd33f2d0d",
+  "preview_settings": {
+    "fmax": 8000,
+    "fmin": 20,
+    "hop_length": 256,
+    "n_fft": 1024,
+    "n_mels": 64,
+    "n_mfcc": 13,
+    "power": 2.0,
+    "sr": 16000,
+    "win_length": 1024
+  }
+}

@@ -85,3 +85,5 @@ speech-emotion-recognition-system/
 ## Current Status
 
 The finalized reusable preprocessing pipeline is implemented and all 1,440 recordings pass in-memory validation. Raw audio remains unchanged and ignored by Git where appropriate. No processed audio, features, or trained models exist yet; feature extraction and model training have not started. No backend or frontend application functionality has been implemented yet.
+
+Controlled waveform, log-Mel, and MFCC feature previews have been generated for one consistent training example from each emotion; these are visual previews only, not saved feature datasets.
