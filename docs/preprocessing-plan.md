@@ -74,3 +74,13 @@ The pilot JSON is `ml/metadata/ravdess_preprocessing_pilot.json` with SHA-256 `C
 ## 9. Next Approval Point
 
 The next step will finalize the configuration and apply it reproducibly to separate processed copies while leaving raw audio unchanged.
+
+## 10. Numerical Safety and Truncation Review
+
+The training-only numerical review is recorded in `ml/metadata/ravdess_numerical_policy_review.json` with SHA-256 `93EB7F4230057C6DB345B183379A25B93C501B010E7324565BE72AA84CFE6865`. It repeated only actors `01-16`; validation and test recordings were excluded.
+
+Seven resampled training signals had finite samples outside `[-1, 1]`. The review compares preserving in-memory floating-point values, hard clipping, and a single training-derived global safety gain. Because no PCM export is required and the overshoots are finite and rare, the provisional recommendation is to preserve float arrays and avoid per-file normalization. This does not apply to a future integer-PCM export, which would require an explicit bounded-output policy.
+
+One source file is labelled potential clipping because its decoded peak is near full scale. Exact PCM full-scale counts are recorded; the review does not claim conclusive clipping from this evidence alone.
+
+For the 32 trimmed signals longer than 56,000 samples, centre crop and maximum-energy-window crop were compared without writing audio. The provisional recommendation is the deterministic maximum-energy window because it selects the highest-energy valid window and resolves ties by choosing the earliest window. Proposed padding remains deterministic zero padding split across both ends, with an odd extra sample at the end. These recommendations have not been applied and no audio was written.

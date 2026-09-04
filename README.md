@@ -84,4 +84,4 @@ speech-emotion-recognition-system/
 
 ## Current Status
 
-A training-only preprocessing pilot has been completed: candidate silence thresholds and fixed durations were analysed using only the training split, and the final configuration is awaiting review. The official RAVDESS archive, raw recordings, and deterministic speaker-independent manifest remain verified and ignored by Git where appropriate. No processed audio, features, or trained models exist yet; no channel conversion, resampling, or preprocessing has been applied to raw files. No backend or frontend application functionality has been implemented yet.
+The training-only preprocessing pilot and numerical-safety/truncation review are complete; final preprocessing approval remains pending. The official RAVDESS archive, raw recordings, and deterministic speaker-independent manifest remain verified and ignored by Git where appropriate. No processed audio, features, or trained models exist yet; no channel conversion, resampling, or preprocessing has been applied to raw files. No backend or frontend application functionality has been implemented yet.
