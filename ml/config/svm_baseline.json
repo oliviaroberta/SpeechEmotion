@@ -1,0 +1,1 @@
+{"version":"1.0.0","model":"SVC","kernel":"rbf","C":10.0,"gamma":"scale","class_weight":"balanced","probability":true,"random_state":42,"standard_scaler":true,"feature_count":78,"label_order":["neutral","calm","happy","sad","angry","fearful","disgust","surprised"],"status":"baseline_candidate"}

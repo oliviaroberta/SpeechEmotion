@@ -1,0 +1,338 @@
+{
+  "configuration_hashes": {
+    "feature_configuration_hash": "74e4ea8cb0d722f6db9a5a7cdd0852ba254d62feeede30c86d4db1293dda8ac8",
+    "preprocessing_configuration_hash": "554cf6c37af50981d4e19f3bfb1e4072c510d96574a763ff1798b9e274a70410",
+    "svm_configuration_hash": "79a0f911a5c42632263aab636aa5bc74871a5e2fffbc98f2a8bb829a41df8370"
+  },
+  "confusion_matrix": [
+    [
+      3,
+      5,
+      0,
+      5,
+      1,
+      1,
+      0,
+      1
+    ],
+    [
+      3,
+      16,
+      0,
+      7,
+      0,
+      6,
+      0,
+      0
+    ],
+    [
+      1,
+      3,
+      8,
+      3,
+      1,
+      8,
+      3,
+      5
+    ],
+    [
+      0,
+      2,
+      4,
+      16,
+      1,
+      7,
+      1,
+      1
+    ],
+    [
+      0,
+      0,
+      3,
+      2,
+      18,
+      4,
+      2,
+      3
+    ],
+    [
+      0,
+      3,
+      4,
+      2,
+      1,
+      20,
+      2,
+      0
+    ],
+    [
+      0,
+      5,
+      1,
+      1,
+      3,
+      0,
+      19,
+      3
+    ],
+    [
+      2,
+      0,
+      3,
+      4,
+      1,
+      3,
+      4,
+      15
+    ]
+  ],
+  "confusion_matrix_relative_path": "ml/reports/figures/svm_baseline_validation_confusion_matrix.png",
+  "correct": 115,
+  "feature_shapes": {
+    "train": [
+      960,
+      78
+    ],
+    "validation": [
+      240,
+      78
+    ]
+  },
+  "incorrect": 125,
+  "metrics": {
+    "accuracy": 0.4791666666666667,
+    "balanced_accuracy": 0.4609375,
+    "macro": {
+      "f1": 0.45973667988035805,
+      "precision": 0.4751045155898156,
+      "recall": 0.4609375
+    },
+    "weighted": {
+      "f1": 0.4743857918723819,
+      "precision": 0.4845559277402477,
+      "recall": 0.4791666666666667
+    }
+  },
+  "model_relative_path": "ml/models/svm/baseline_svm.joblib",
+  "per_class": {
+    "angry": {
+      "f1": 0.6206896551724138,
+      "precision": 0.6923076923076923,
+      "recall": 0.5625,
+      "support": 32
+    },
+    "calm": {
+      "f1": 0.48484848484848486,
+      "precision": 0.47058823529411764,
+      "recall": 0.5,
+      "support": 32
+    },
+    "disgust": {
+      "f1": 0.6031746031746031,
+      "precision": 0.6129032258064516,
+      "recall": 0.59375,
+      "support": 32
+    },
+    "fearful": {
+      "f1": 0.49382716049382713,
+      "precision": 0.40816326530612246,
+      "recall": 0.625,
+      "support": 32
+    },
+    "happy": {
+      "f1": 0.2909090909090909,
+      "precision": 0.34782608695652173,
+      "recall": 0.25,
+      "support": 32
+    },
+    "neutral": {
+      "f1": 0.24,
+      "precision": 0.3333333333333333,
+      "recall": 0.1875,
+      "support": 16
+    },
+    "sad": {
+      "f1": 0.4444444444444444,
+      "precision": 0.4,
+      "recall": 0.5,
+      "support": 32
+    },
+    "surprised": {
+      "f1": 0.5,
+      "precision": 0.5357142857142857,
+      "recall": 0.46875,
+      "support": 32
+    }
+  },
+  "sample_predictions": [
+    {
+      "actor_id": "17",
+      "actual_emotion": "neutral",
+      "correct": false,
+      "filename": "03-01-01-01-01-01-17.wav",
+      "predicted_emotion": "sad",
+      "predicted_probability": 0.5080708627057342,
+      "probabilities": {
+        "angry": 0.02357240238447567,
+        "calm": 0.008109544469636635,
+        "disgust": 0.324547789811514,
+        "fearful": 0.025255983437802814,
+        "happy": 0.09938267653707197,
+        "neutral": 0.005223066956907727,
+        "sad": 0.5080708627057342,
+        "surprised": 0.005837673696856867
+      }
+    },
+    {
+      "actor_id": "17",
+      "actual_emotion": "calm",
+      "correct": false,
+      "filename": "03-01-02-01-01-01-17.wav",
+      "predicted_emotion": "neutral",
+      "predicted_probability": 0.4141874318293515,
+      "probabilities": {
+        "angry": 0.003358421827026408,
+        "calm": 0.06610993126398763,
+        "disgust": 0.012707305696334796,
+        "fearful": 0.07076511006020675,
+        "happy": 0.0635644869881301,
+        "neutral": 0.4141874318293515,
+        "sad": 0.34103068062495634,
+        "surprised": 0.02827663171000641
+      }
+    },
+    {
+      "actor_id": "17",
+      "actual_emotion": "happy",
+      "correct": false,
+      "filename": "03-01-03-01-01-01-17.wav",
+      "predicted_emotion": "fearful",
+      "predicted_probability": 0.7441037602697322,
+      "probabilities": {
+        "angry": 0.0019350039608868697,
+        "calm": 0.018466792559869837,
+        "disgust": 0.0015306203930982654,
+        "fearful": 0.7441037602697322,
+        "happy": 0.0878280500909288,
+        "neutral": 0.07630109582564569,
+        "sad": 0.024911265970157515,
+        "surprised": 0.04492341092968059
+      }
+    },
+    {
+      "actor_id": "17",
+      "actual_emotion": "sad",
+      "correct": false,
+      "filename": "03-01-04-01-01-01-17.wav",
+      "predicted_emotion": "fearful",
+      "predicted_probability": 0.3237734560629615,
+      "probabilities": {
+        "angry": 0.1287229828135526,
+        "calm": 0.025486826691058884,
+        "disgust": 0.02540827552474037,
+        "fearful": 0.3237734560629615,
+        "happy": 0.11617179302124046,
+        "neutral": 0.2120796626179976,
+        "sad": 0.12010572755180292,
+        "surprised": 0.048251275716645343
+      }
+    },
+    {
+      "actor_id": "17",
+      "actual_emotion": "angry",
+      "correct": false,
+      "filename": "03-01-05-01-01-01-17.wav",
+      "predicted_emotion": "fearful",
+      "predicted_probability": 0.5733644501601826,
+      "probabilities": {
+        "angry": 0.009406344953216293,
+        "calm": 0.02218719961267389,
+        "disgust": 0.02298104112313773,
+        "fearful": 0.5733644501601826,
+        "happy": 0.05574983913665414,
+        "neutral": 0.09262898238652903,
+        "sad": 0.16202468790219826,
+        "surprised": 0.06165745472540819
+      }
+    },
+    {
+      "actor_id": "17",
+      "actual_emotion": "fearful",
+      "correct": true,
+      "filename": "03-01-06-01-01-01-17.wav",
+      "predicted_emotion": "fearful",
+      "predicted_probability": 0.4608775652539884,
+      "probabilities": {
+        "angry": 0.008889700524548775,
+        "calm": 0.014045454847709287,
+        "disgust": 0.024626833198437417,
+        "fearful": 0.4608775652539884,
+        "happy": 0.25645469269317855,
+        "neutral": 0.08419405601990883,
+        "sad": 0.11899891405575978,
+        "surprised": 0.031912783406469386
+      }
+    },
+    {
+      "actor_id": "17",
+      "actual_emotion": "disgust",
+      "correct": false,
+      "filename": "03-01-07-01-01-01-17.wav",
+      "predicted_emotion": "angry",
+      "predicted_probability": 0.4669805218624653,
+      "probabilities": {
+        "angry": 0.4669805218624653,
+        "calm": 0.004437104644682902,
+        "disgust": 0.31475980413975757,
+        "fearful": 0.03541521533486326,
+        "happy": 0.04597314386225727,
+        "neutral": 0.006567368885439822,
+        "sad": 0.04737252433635316,
+        "surprised": 0.07849431693418105
+      }
+    },
+    {
+      "actor_id": "17",
+      "actual_emotion": "surprised",
+      "correct": true,
+      "filename": "03-01-08-01-01-01-17.wav",
+      "predicted_emotion": "surprised",
+      "predicted_probability": 0.7285027723388589,
+      "probabilities": {
+        "angry": 0.0011229174390614833,
+        "calm": 0.0073874478776992415,
+        "disgust": 0.0007263840796287254,
+        "fearful": 0.17949074682603974,
+        "happy": 0.0690673660696372,
+        "neutral": 0.006713597273102817,
+        "sad": 0.006988768095971718,
+        "surprised": 0.7285027723388589
+      }
+    }
+  ],
+  "test_actors_excluded": true,
+  "train_actor_ids": [
+    "01",
+    "02",
+    "03",
+    "04",
+    "05",
+    "06",
+    "07",
+    "08",
+    "09",
+    "10",
+    "11",
+    "12",
+    "13",
+    "14",
+    "15",
+    "16"
+  ],
+  "validation_actor_ids": [
+    "17",
+    "18",
+    "19",
+    "20"
+  ]
+}
