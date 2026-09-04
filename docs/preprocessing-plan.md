@@ -84,3 +84,11 @@ Seven resampled training signals had finite samples outside `[-1, 1]`. The revie
 One source file is labelled potential clipping because its decoded peak is near full scale. Exact PCM full-scale counts are recorded; the review does not claim conclusive clipping from this evidence alone.
 
 For the 32 trimmed signals longer than 56,000 samples, centre crop and maximum-energy-window crop were compared without writing audio. The provisional recommendation is the deterministic maximum-energy window because it selects the highest-energy valid window and resolves ties by choosing the earliest window. Proposed padding remains deterministic zero padding split across both ends, with an odd extra sample at the end. These recommendations have not been applied and no audio was written.
+
+## 11. Finalized Pipeline Validation
+
+Configuration `ml/config/preprocessing.json` version `1.0.0` is finalized. The reusable module at `ml/src/audio_preprocessing.py` applies float loading, arithmetic stereo averaging, `soxr_hq` resampling to 16 kHz, `top_db=40` trimming, maximum-energy truncation, and symmetric zero padding. Finite float overshoots are preserved; clipping, per-file normalization, and PCM export are disabled.
+
+All 1,440 recordings passed deterministic in-memory validation with output shape `[56000]`, `float32` dtype, contiguous storage, and finite values. Train/validation/test counts were 960/240/240. Training actions matched the approved pilot: 928 padded and 32 truncated. No processed audio, arrays, features, or models were written.
+
+The validation report is `ml/metadata/ravdess_preprocessing_validation.json`, SHA-256 `C463B735095888751BC7FCF35ADB2A2F57919BD65744175CB7B08A862CC55EFC`. Its raw-data-tree SHA-256 before and after processing matched exactly. Two report-generation passes produced identical hashes. Exact floating-point fingerprints are guaranteed for this locked environment; another platform or dependency build can produce minor numerical differences. Feature extraction and model training have not begun.
