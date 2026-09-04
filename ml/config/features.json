@@ -1,0 +1,6 @@
+{
+  "version": "1.0.0", "sample_rate": 16000, "waveform_samples": 56000,
+  "n_fft": 1024, "win_length": 1024, "hop_length": 256, "window": "hann", "center": true, "pad_mode": "constant",
+  "n_mels": 64, "fmin": 20, "fmax": 8000, "power": 2.0, "power_to_db_ref": 1.0, "amin": 1e-10, "top_db": 80,
+  "n_mfcc": 13, "dct_type": 2, "mfcc_norm": "ortho", "lifter": 0, "delta_width": 9, "delta_mode": "interp", "output_dtype": "float32"
+}
