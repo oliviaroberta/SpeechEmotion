@@ -188,9 +188,21 @@ def validate_manifest(dataset_directory: Path, manifest_path: Path, summary_path
     serialized_summary = json.dumps(saved_summary)
     if "C:\\" in serialized_summary or "olivia.dogbey" in serialized_summary.lower() or "\\\\" in serialized_summary:
         raise ValueError("Split summary contains a local absolute path or environment-specific value")
-    metadata_files = {path.name for path in manifest_path.parent.iterdir() if path.is_file()}
-    if metadata_files != {manifest_path.name, summary_path.name}:
-        raise ValueError(f"Unexpected file in metadata directory: {sorted(metadata_files)}")
+    metadata_directory = manifest_path.parent
+    required_metadata = {manifest_path.name, summary_path.name}
+    metadata_files = {path.name for path in metadata_directory.iterdir() if path.is_file()}
+    if not required_metadata.issubset(metadata_files):
+        raise ValueError("Required manifest metadata files are missing.")
+    unsafe_suffixes = {
+        ".wav", ".mp3", ".flac", ".ogg", ".m4a", ".zip", ".npy", ".npz",
+        ".pkl", ".joblib", ".h5", ".keras", ".onnx", ".pt", ".pth", ".ckpt",
+        ".tmp", ".part",
+    }
+    for entry in metadata_directory.iterdir():
+        if entry.is_dir() or entry.name.lower() in {".cache", "cache", "__pycache__"}:
+            raise ValueError(f"Unsafe directory in metadata directory: {entry.name}")
+        if entry.suffix.lower() in unsafe_suffixes or entry.suffix.lower() not in {".csv", ".json"}:
+            raise ValueError(f"Unsafe or unsupported metadata file: {entry.name}")
     print("Split intersections: train/validation=[], train/test=[], validation/test=[]")
     print(f"Duration tolerance seconds: {DURATION_TOLERANCE_SECONDS}")
 
