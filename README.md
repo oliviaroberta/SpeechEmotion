@@ -89,3 +89,5 @@ The finalized reusable preprocessing pipeline is implemented and all 1,440 recor
 Controlled waveform, log-Mel, and MFCC feature previews have been generated for one consistent training example from each emotion; these are visual previews only, not saved feature datasets.
 
 A fixed baseline SVM candidate has been trained and evaluated on validation actors; it is not the final selected model.
+
+A speaker-grouped SVM tuning experiment did not improve validation performance; the original baseline remains the leading SVM candidate and the test split remains untouched.

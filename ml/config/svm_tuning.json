@@ -1,0 +1,17 @@
+{
+  "baseline_candidate_status": "not_final_model",
+  "class_weight": "balanced",
+  "cross_validation": "GroupKFold",
+  "folds": 4,
+  "label_order": ["neutral", "calm", "happy", "sad", "angry", "fearful", "disgust", "surprised"],
+  "model": "SVC",
+  "parameter_grid": {
+    "linear": {"C": [0.1, 1, 10]},
+    "rbf": {"C": [1, 10, 100], "gamma": ["scale", 0.001, 0.01, 0.1]}
+  },
+  "pipeline": ["StandardScaler", "SVC"],
+  "probability": false,
+  "random_state": 42,
+  "selection_rule": ["highest_mean_macro_f1", "highest_mean_balanced_accuracy", "lowest_C", "kernel_then_gamma_parameter_order"],
+  "version": "1.0.0"
+}
