@@ -91,3 +91,5 @@ Controlled waveform, log-Mel, and MFCC feature previews have been generated for 
 A fixed baseline SVM candidate has been trained and evaluated on validation actors; it is not the final selected model.
 
 A speaker-grouped SVM tuning experiment did not improve validation performance; the original baseline remains the leading SVM candidate and the test split remains untouched.
+
+The first baseline CNN was trained and evaluated on validation actors; it did not outperform the leading SVM, and the final test split remains untouched.

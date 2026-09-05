@@ -1,0 +1,18 @@
+{
+  "batch_size": 32,
+  "class_weights": "balanced",
+  "early_stopping": {
+    "monitor": "val_loss",
+    "patience": 6,
+    "restore_best_weights": true
+  },
+  "maximum_epochs": 40,
+  "random_seed": 42,
+  "reduce_learning_rate": {
+    "factor": 0.5,
+    "minimum_learning_rate": 1e-05,
+    "monitor": "val_loss",
+    "patience": 3
+  },
+  "version": "1.0.0"
+}

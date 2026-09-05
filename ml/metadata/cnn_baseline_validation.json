@@ -1,0 +1,224 @@
+{
+  "actor_ids": {
+    "test_excluded": true,
+    "train": [
+      "01",
+      "02",
+      "03",
+      "04",
+      "05",
+      "06",
+      "07",
+      "08",
+      "09",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16"
+    ],
+    "validation": [
+      "17",
+      "18",
+      "19",
+      "20"
+    ]
+  },
+  "baseline_svm_comparison": {
+    "accuracy_delta": -0.275,
+    "cnn_accuracy": 0.20416666666666666,
+    "cnn_macro_f1": 0.1131718124642653,
+    "cnn_outperformed_svm": false,
+    "macro_f1_delta": -0.3465648674160927,
+    "svm_accuracy": 0.4791666666666667,
+    "svm_macro_f1": 0.45973667988035805
+  },
+  "best_epoch": 2,
+  "class_weights": {
+    "0": 1.875,
+    "1": 0.9375,
+    "2": 0.9375,
+    "3": 0.9375,
+    "4": 0.9375,
+    "5": 0.9375,
+    "6": 0.9375,
+    "7": 0.9375
+  },
+  "configuration_hashes": {
+    "cnn_architecture_configuration_hash": "175aeb84f34da135dc10a38f8a30d7729de87522c87785e7312c21a728eb5f3c",
+    "cnn_dataset_configuration_hash": "0c71e95cc2e3b7216a1dee26760db693ad82fa98ffddb4727c93978c827bee5f",
+    "cnn_training_configuration_hash": "9a47913360f7e17cf1c144d46c5b919e839252160ac73d3ecb14e814dda15694",
+    "dataset_summary_hash": "06e1df618fc1b05cc39532b3386d245acf7725346867c77c45870721d799977d"
+  },
+  "confusion_figure_relative_path": "ml/reports/figures/cnn_baseline_validation_confusion_matrix.png",
+  "confusion_matrix": [
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      16
+    ],
+    [
+      3,
+      0,
+      0,
+      0,
+      0,
+      18,
+      0,
+      11
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      9,
+      6,
+      0,
+      17
+    ],
+    [
+      3,
+      0,
+      0,
+      0,
+      2,
+      12,
+      0,
+      15
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      14,
+      3,
+      0,
+      15
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      9,
+      10,
+      0,
+      13
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      6,
+      11,
+      0,
+      15
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      7,
+      0,
+      25
+    ]
+  ],
+  "epochs_completed": 8,
+  "feature_shapes": {
+    "train": [
+      960,
+      64,
+      219,
+      1
+    ],
+    "validation": [
+      240,
+      64,
+      219,
+      1
+    ]
+  },
+  "final_learning_rate": 0.0002500000118743628,
+  "history_figure_relative_path": "ml/reports/figures/cnn_baseline_training_history.png",
+  "metrics": {
+    "accuracy": 0.20416666666666666,
+    "balanced_accuracy": 0.19140625,
+    "macro": {
+      "f1": 0.1131718124642653,
+      "precision": 0.08701301563050887,
+      "recall": 0.19140625
+    },
+    "weighted": {
+      "f1": 0.12071659996188298,
+      "precision": 0.09281388333920945,
+      "recall": 0.20416666666666666
+    }
+  },
+  "model_relative_path": "ml/models/cnn/cnn_baseline.keras",
+  "model_trained_on_test_data": false,
+  "per_class": {
+    "angry": {
+      "f1": 0.3888888888888889,
+      "precision": 0.35,
+      "recall": 0.4375,
+      "support": 32
+    },
+    "calm": {
+      "f1": 0.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "support": 32
+    },
+    "disgust": {
+      "f1": 0.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "support": 32
+    },
+    "fearful": {
+      "f1": 0.20202020202020202,
+      "precision": 0.14925373134328357,
+      "recall": 0.3125,
+      "support": 32
+    },
+    "happy": {
+      "f1": 0.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "support": 32
+    },
+    "neutral": {
+      "f1": 0.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "support": 16
+    },
+    "sad": {
+      "f1": 0.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "support": 32
+    },
+    "surprised": {
+      "f1": 0.31446540880503143,
+      "precision": 0.1968503937007874,
+      "recall": 0.78125,
+      "support": 32
+    }
+  },
+  "reload_predictions_match": true,
+  "reload_probability_max_abs_difference": 0.0,
+  "training_duration_seconds": 123.32734999997774
+}
