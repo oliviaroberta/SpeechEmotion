@@ -1,0 +1,130 @@
+{
+  "configuration_hash": "0c71e95cc2e3b7216a1dee26760db693ad82fa98ffddb4727c93978c827bee5f",
+  "deterministic_manifest_order": true,
+  "files": {
+    "normalization.npz": {
+      "bytes": 1262,
+      "sha256": "dcad8fdf235cfb2ea772eac30f081d58f4d8f8ecbc49e5e038bfdf8cd2c88886"
+    },
+    "train_labels.npy": {
+      "bytes": 7808,
+      "sha256": "e8cce3a36167defdd7651cfdcd388b6be251fa052b15d5329df5c809dd07b8ee"
+    },
+    "train_log_mel.npy": {
+      "bytes": 53821568,
+      "sha256": "74deaca874c3b710bb92c959bb28eadfebe62a6d8db45d50706d9a526713738d"
+    },
+    "validation_labels.npy": {
+      "bytes": 2048,
+      "sha256": "32fdc6772fba9e41f06f18f7f6c6f0604b1138d095afea9c3b1c2d3b25682d45"
+    },
+    "validation_log_mel.npy": {
+      "bytes": 13455488,
+      "sha256": "456d2b7bf1885529715aa8dd28f4591dc6743408cc4d4e3b77c4e271ee95f870"
+    }
+  },
+  "labels": {
+    "class_order": [
+      "neutral",
+      "calm",
+      "happy",
+      "sad",
+      "angry",
+      "fearful",
+      "disgust",
+      "surprised"
+    ],
+    "dtype": "int64",
+    "range": [
+      0,
+      7
+    ]
+  },
+  "manifest_hash": "079884ea3724c1adab1c53e33d9eb669b58fcc58e4f577379bbff807a46c398d",
+  "model_trained": false,
+  "normalization": {
+    "dtype": "float32",
+    "epsilon": 1e-06,
+    "mean_shape": [
+      64
+    ],
+    "method": "per_mel_band_training_mean_std",
+    "normalized_train_mean_max_abs": 2.155383782564968e-07,
+    "normalized_train_std_max_abs_error": 5.960464477539062e-07,
+    "std_shape": [
+      64
+    ],
+    "training_only": true
+  },
+  "output_directory": "ml/data/processed/cnn_baseline",
+  "raw_audio_modified": false,
+  "source_recordings": {
+    "train": 960,
+    "validation": 240
+  },
+  "splits": {
+    "train": {
+      "actors": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06",
+        "07",
+        "08",
+        "09",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16"
+      ],
+      "class_counts": {
+        "angry": 128,
+        "calm": 128,
+        "disgust": 128,
+        "fearful": 128,
+        "happy": 128,
+        "neutral": 64,
+        "sad": 128,
+        "surprised": 128
+      },
+      "dtype": "float32",
+      "shape": [
+        960,
+        64,
+        219,
+        1
+      ]
+    },
+    "validation": {
+      "actors": [
+        "17",
+        "18",
+        "19",
+        "20"
+      ],
+      "class_counts": {
+        "angry": 32,
+        "calm": 32,
+        "disgust": 32,
+        "fearful": 32,
+        "happy": 32,
+        "neutral": 16,
+        "sad": 32,
+        "surprised": 32
+      },
+      "dtype": "float32",
+      "shape": [
+        240,
+        64,
+        219,
+        1
+      ]
+    }
+  },
+  "test_actors_accessed": false
+}
