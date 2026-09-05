@@ -1,0 +1,43 @@
+{
+  "architecture": [
+    "Conv2D(32, 3x3)",
+    "BatchNormalization",
+    "ReLU",
+    "MaxPooling2D",
+    "Dropout(0.20)",
+    "Conv2D(64, 3x3)",
+    "BatchNormalization",
+    "ReLU",
+    "MaxPooling2D",
+    "Dropout(0.25)",
+    "Conv2D(128, 3x3)",
+    "BatchNormalization",
+    "ReLU",
+    "MaxPooling2D",
+    "Dropout(0.30)",
+    "GlobalAveragePooling2D",
+    "Dense(64, ReLU)",
+    "Dropout(0.40)",
+    "Dense(8, Softmax)"
+  ],
+  "classes": [
+    "neutral",
+    "calm",
+    "happy",
+    "sad",
+    "angry",
+    "fearful",
+    "disgust",
+    "surprised"
+  ],
+  "input_shape": [
+    64,
+    219,
+    1
+  ],
+  "output_shape": [
+    8
+  ],
+  "parameter_count": 102344,
+  "version": "1.0.0"
+}
