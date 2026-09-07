@@ -65,3 +65,24 @@ def build_cnn_baseline(config: dict[str, Any] | None = None) -> tf.keras.Model:
         metrics=config["compile"]["metrics"],
     )
     return model
+
+
+def build_cnn_reduced_regularization(config: dict[str, Any] | None = None) -> tf.keras.Model:
+    """Build the baseline architecture with every diagnostic dropout rate set to zero."""
+    config = config or load_cnn_config()
+    tf.keras.utils.set_random_seed(config["random_seed"])
+    inputs = tf.keras.Input(shape=tuple(config["input_shape"]), name="log_mel")
+    features = inputs
+    for filters in (32, 64, 128):
+        features = tf.keras.layers.Conv2D(filters, (3, 3), padding="valid")(features)
+        features = tf.keras.layers.BatchNormalization()(features)
+        features = tf.keras.layers.ReLU()(features)
+        features = tf.keras.layers.MaxPooling2D(pool_size=(2, 2))(features)
+        features = tf.keras.layers.Dropout(0.0)(features)
+    features = tf.keras.layers.GlobalAveragePooling2D()(features)
+    features = tf.keras.layers.Dense(64, activation="relu")(features)
+    features = tf.keras.layers.Dropout(0.0)(features)
+    outputs = tf.keras.layers.Dense(len(config["classes"]), activation="softmax", name="emotion")(features)
+    model = tf.keras.Model(inputs=inputs, outputs=outputs, name="cnn_reduced_regularization")
+    model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=config["compile"]["learning_rate"]), loss=config["compile"]["loss"], metrics=config["compile"]["metrics"])
+    return model

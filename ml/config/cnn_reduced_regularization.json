@@ -1,0 +1,13 @@
+{
+  "batch_size": 32,
+  "class_weights": "balanced",
+  "dropout_rates": [0.0, 0.0, 0.0, 0.0],
+  "early_stopping": {"monitor": "val_macro_f1", "mode": "max", "patience": 12, "restore_best_weights": true},
+  "input_shape": [64, 219, 1],
+  "learning_rate": 0.001,
+  "maximum_epochs": 80,
+  "model_variant": "cnn_reduced_regularization",
+  "random_seed": 42,
+  "reduce_learning_rate": {"factor": 0.5, "minimum_learning_rate": 1e-05, "monitor": "val_macro_f1", "mode": "max", "patience": 4},
+  "version": "1.0.0"
+}

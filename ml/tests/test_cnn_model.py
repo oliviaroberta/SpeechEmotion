@@ -4,7 +4,7 @@ import unittest
 
 import numpy as np
 
-from cnn_model import EXPECTED_CLASSES, EXPECTED_INPUT_SHAPE, build_cnn_baseline, load_cnn_config
+from cnn_model import EXPECTED_CLASSES, EXPECTED_INPUT_SHAPE, build_cnn_baseline, build_cnn_reduced_regularization, load_cnn_config
 
 
 class CnnBaselineTests(unittest.TestCase):
@@ -36,6 +36,13 @@ class CnnBaselineTests(unittest.TestCase):
         result = build_cnn_baseline().train_on_batch(synthetic_input, labels, return_dict=True)
         self.assertIn("loss", result)
         self.assertTrue(all(np.isfinite(value) for value in result.values()))
+
+    def test_reduced_regularization_variant(self) -> None:
+        model = build_cnn_reduced_regularization()
+        self.assertEqual(model.input_shape, (None, 64, 219, 1))
+        self.assertEqual(model.output_shape, (None, 8))
+        self.assertEqual(model.count_params(), 102344)
+        self.assertTrue(all(layer.rate == 0.0 for layer in model.layers if layer.__class__.__name__ == "Dropout"))
 
 
 if __name__ == "__main__":

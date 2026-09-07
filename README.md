@@ -93,3 +93,5 @@ A fixed baseline SVM candidate has been trained and evaluated on validation acto
 A speaker-grouped SVM tuning experiment did not improve validation performance; the original baseline remains the leading SVM candidate and the test split remains untouched.
 
 The first baseline CNN was trained and evaluated on validation actors; it did not outperform the leading SVM, and the final test split remains untouched.
+
+The reduced-regularization CNN improved validation performance beyond the baseline SVM; it remains a validation-only candidate and the final test split is untouched.
