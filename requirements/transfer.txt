@@ -1,0 +1,5 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+# Frozen Wav2Vec2 transfer-learning experiment on native Windows CPU.
+torch==2.7.0+cpu
+transformers==4.57.1

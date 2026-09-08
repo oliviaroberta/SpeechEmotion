@@ -1,0 +1,261 @@
+{
+  "actor_ids": {
+    "test_actors_21_to_24_accessed": false,
+    "train": [
+      "01",
+      "02",
+      "03",
+      "04",
+      "05",
+      "06",
+      "07",
+      "08",
+      "09",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16"
+    ],
+    "validation": [
+      "17",
+      "18",
+      "19",
+      "20"
+    ]
+  },
+  "cache": {
+    "ml/data/processed/transfer_wav2vec2/train_embeddings.npy": {
+      "bytes": 5898368,
+      "sha256": "c6cf1233e8483747965669ef8a83af67245502aefde3bef35f419d93c93cf768"
+    },
+    "ml/data/processed/transfer_wav2vec2/train_labels.npy": {
+      "bytes": 7808,
+      "sha256": "e8cce3a36167defdd7651cfdcd388b6be251fa052b15d5329df5c809dd07b8ee"
+    },
+    "ml/data/processed/transfer_wav2vec2/validation_embeddings.npy": {
+      "bytes": 1474688,
+      "sha256": "1a18df6a7b797c40512c26fa3fd00f6859c0ba282981d5d6cf076a82fb91ed98"
+    },
+    "ml/data/processed/transfer_wav2vec2/validation_labels.npy": {
+      "bytes": 2048,
+      "sha256": "32fdc6772fba9e41f06f18f7f6c6f0604b1138d095afea9c3b1c2d3b25682d45"
+    }
+  },
+  "configuration_hashes": {
+    "preprocessing": "554cf6c37af50981d4e19f3bfb1e4072c510d96574a763ff1798b9e274a70410",
+    "transfer": "a896dd708ba171a971d90ca34ff8ac92b554cf766bb6acdcfa357184b11db35a"
+  },
+  "embedding_extraction_seconds": 0.0,
+  "embedding_shapes": {
+    "train": [
+      960,
+      1536
+    ],
+    "validation": [
+      240,
+      1536
+    ]
+  },
+  "encoder": {
+    "frozen": true,
+    "model_identifier": "facebook/wav2vec2-base",
+    "resolved_revision": "0b5b8e868dd84f03fd87d01f9c4ff0f080fecfe8"
+  },
+  "label_order": [
+    "neutral",
+    "calm",
+    "happy",
+    "sad",
+    "angry",
+    "fearful",
+    "disgust",
+    "surprised"
+  ],
+  "metrics": {
+    "accuracy": 0.5291666666666667,
+    "balanced_accuracy": 0.5234375,
+    "macro": {
+      "f1": 0.5166643837540723,
+      "precision": 0.5274665664468297,
+      "recall": 0.5234375
+    },
+    "per_emotion": {
+      "angry": {
+        "f1": 0.5357142857142857,
+        "precision": 0.625,
+        "recall": 0.46875,
+        "support": 32
+      },
+      "calm": {
+        "f1": 0.6268656716417911,
+        "precision": 0.6,
+        "recall": 0.65625,
+        "support": 32
+      },
+      "disgust": {
+        "f1": 0.7368421052631579,
+        "precision": 0.6363636363636364,
+        "recall": 0.875,
+        "support": 32
+      },
+      "fearful": {
+        "f1": 0.37681159420289856,
+        "precision": 0.35135135135135137,
+        "recall": 0.40625,
+        "support": 32
+      },
+      "happy": {
+        "f1": 0.5161290322580645,
+        "precision": 0.5333333333333333,
+        "recall": 0.5,
+        "support": 32
+      },
+      "neutral": {
+        "f1": 0.4666666666666667,
+        "precision": 0.5,
+        "recall": 0.4375,
+        "support": 16
+      },
+      "sad": {
+        "f1": 0.5142857142857142,
+        "precision": 0.47368421052631576,
+        "recall": 0.5625,
+        "support": 32
+      },
+      "surprised": {
+        "f1": 0.36,
+        "precision": 0.5,
+        "recall": 0.28125,
+        "support": 32
+      }
+    },
+    "weighted": {
+      "f1": 0.5199975648932327,
+      "precision": 0.5292976708766183,
+      "recall": 0.5291666666666667
+    }
+  },
+  "model_relative_path": "ml/models/transfer/wav2vec2_logreg.joblib",
+  "package_versions": {
+    "numpy": "2.4.6",
+    "scikit_learn": "1.9.0",
+    "torch": "2.7.0+cpu",
+    "transformers": "4.57.1"
+  },
+  "prediction_distribution": {
+    "angry": 24,
+    "calm": 35,
+    "disgust": 44,
+    "fearful": 37,
+    "happy": 30,
+    "neutral": 14,
+    "sad": 38,
+    "surprised": 18
+  },
+  "promotion": {
+    "current_leader_validation_accuracy": 0.5541666666666667,
+    "current_leader_validation_macro_f1": 0.5369751467634547,
+    "current_leading_model": "cnn_reduced_regularization",
+    "rule": {
+      "minimum_validation_accuracy": 0.564167,
+      "minimum_validation_macro_f1": 0.556975,
+      "requires_both": true
+    },
+    "transfer_candidate_promoted": false
+  },
+  "reload": {
+    "predictions_match": true,
+    "probabilities_match": true,
+    "probability_max_abs_difference": 0.0
+  },
+  "source_recording_counts": {
+    "train": 960,
+    "validation": 240
+  },
+  "validation_confusion_matrix": [
+    [
+      7,
+      5,
+      0,
+      2,
+      0,
+      1,
+      0,
+      1
+    ],
+    [
+      3,
+      21,
+      0,
+      8,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      3,
+      16,
+      2,
+      0,
+      4,
+      4,
+      3
+    ],
+    [
+      2,
+      4,
+      1,
+      18,
+      1,
+      4,
+      1,
+      1
+    ],
+    [
+      1,
+      0,
+      5,
+      1,
+      15,
+      2,
+      5,
+      3
+    ],
+    [
+      0,
+      1,
+      7,
+      6,
+      4,
+      13,
+      0,
+      1
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      3,
+      1,
+      28,
+      0
+    ],
+    [
+      1,
+      1,
+      1,
+      1,
+      1,
+      12,
+      6,
+      9
+    ]
+  ],
+  "validation_figure_relative_path": "ml/reports/figures/wav2vec2_transfer_validation_confusion_matrix.png"
+}

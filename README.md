@@ -97,3 +97,5 @@ The first baseline CNN was trained and evaluated on validation actors; it did no
 The reduced-regularization CNN improved validation performance beyond the baseline SVM; it remains a validation-only candidate and the final test split is untouched.
 
 The regularized-and-augmented CNN did not meet the fixed promotion threshold, so the reduced-regularization CNN remains the leading validation-only candidate and the final test split is untouched.
+
+A frozen-Wav2Vec2 transfer-learning candidate was evaluated on validation actors only. It did not meet the predeclared promotion rule, so the reduced-regularization CNN remains the leading validation-only candidate and the final test split remains untouched.
