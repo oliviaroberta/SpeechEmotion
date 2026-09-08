@@ -1,10 +1,12 @@
 from __future__ import annotations
 
 import unittest
+from pathlib import Path
+from tempfile import TemporaryDirectory
 
 import numpy as np
 
-from cnn_model import EXPECTED_CLASSES, EXPECTED_INPUT_SHAPE, build_cnn_baseline, build_cnn_reduced_regularization, load_cnn_config
+from cnn_model import EXPECTED_CLASSES, EXPECTED_INPUT_SHAPE, SpectrogramMasking, build_cnn_baseline, build_cnn_reduced_regularization, build_cnn_regularized_augmented, load_cnn_config
 
 
 class CnnBaselineTests(unittest.TestCase):
@@ -43,6 +45,30 @@ class CnnBaselineTests(unittest.TestCase):
         self.assertEqual(model.output_shape, (None, 8))
         self.assertEqual(model.count_params(), 102344)
         self.assertTrue(all(layer.rate == 0.0 for layer in model.layers if layer.__class__.__name__ == "Dropout"))
+
+    def test_training_only_deterministic_spectrogram_masking(self) -> None:
+        inputs = np.ones((1, 64, 219, 1), dtype=np.float32)
+        layer = SpectrogramMasking()
+        training_first = layer(inputs, training=True).numpy()
+        training_second = layer(inputs, training=True).numpy()
+        inference = layer(inputs, training=False).numpy()
+        self.assertEqual(training_first.shape, inputs.shape)
+        self.assertTrue(np.isfinite(training_first).all())
+        np.testing.assert_array_equal(training_first, training_second)
+        np.testing.assert_array_equal(inference, inputs)
+        self.assertLess(np.count_nonzero(training_first), inputs.size)
+
+    def test_augmented_variant_save_and_reload(self) -> None:
+        inputs = np.full((1, 64, 219, 1), 0.25, dtype=np.float32)
+        model = build_cnn_regularized_augmented()
+        self.assertEqual(model.count_params(), 102344)
+        before = model(inputs, training=False).numpy()
+        with TemporaryDirectory() as directory:
+            path = Path(directory) / "temporary.keras"
+            model.save(path)
+            import tensorflow as tf
+            after = tf.keras.models.load_model(path)(inputs, training=False).numpy()
+        np.testing.assert_array_equal(before, after)
 
 
 if __name__ == "__main__":
