@@ -1,0 +1,227 @@
+{
+  "environment": {
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.11.5",
+    "tensorflow": "2.21.0"
+  },
+  "evaluation_timestamp_utc": "2026-09-08T09:17:33.589748+00:00",
+  "feature_identity": {
+    "configuration_hash": "74e4ea8cb0d722f6db9a5a7cdd0852ba254d62feeede30c86d4db1293dda8ac8",
+    "shape": [
+      64,
+      219,
+      1
+    ]
+  },
+  "final_test_only": true,
+  "model": {
+    "artifact_relative_path": "ml/models/cnn/cnn_reduced_regularization.keras",
+    "artifact_sha256": "8d5040d2aece8bd246964cebc23b34c544e9d5101ba2340c4ad46d58b9c034a5",
+    "identity": "cnn_reduced_regularization_no_dropout",
+    "parameter_count": 102344,
+    "selected_validation_accuracy": 0.5541666666666667,
+    "selected_validation_macro_f1": 0.5369751467634547
+  },
+  "normalization": {
+    "artifact_relative_path": "ml/data/processed/cnn_baseline/normalization.npz",
+    "artifact_sha256": "dcad8fdf235cfb2ea772eac30f081d58f4d8f8ecbc49e5e038bfdf8cd2c88886",
+    "method": "training_only_per_mel_band_mean_std",
+    "statistics_shape": [
+      64
+    ]
+  },
+  "prediction_distribution": {
+    "angry": 60,
+    "calm": 26,
+    "disgust": 39,
+    "fearful": 12,
+    "happy": 19,
+    "neutral": 30,
+    "sad": 6,
+    "surprised": 48
+  },
+  "preprocessing_identity": {
+    "configuration_hash": "554cf6c37af50981d4e19f3bfb1e4072c510d96574a763ff1798b9e274a70410",
+    "output_shape": [
+      56000
+    ]
+  },
+  "reload": {
+    "probabilities_match": true,
+    "probability_max_abs_difference": 0.0
+  },
+  "selected_before_test": true,
+  "test": {
+    "actor_ids": [
+      "21",
+      "22",
+      "23",
+      "24"
+    ],
+    "feature_shape": [
+      240,
+      64,
+      219,
+      1
+    ],
+    "metrics": {
+      "accuracy": 0.4666666666666667,
+      "balanced_accuracy": 0.47265625,
+      "macro": {
+        "f1": 0.4195534019805841,
+        "precision": 0.45179655870445345,
+        "recall": 0.47265625
+      },
+      "per_emotion": {
+        "angry": {
+          "f1": 0.5869565217391305,
+          "precision": 0.45,
+          "recall": 0.84375,
+          "support": 32
+        },
+        "calm": {
+          "f1": 0.5862068965517241,
+          "precision": 0.6538461538461539,
+          "recall": 0.53125,
+          "support": 32
+        },
+        "disgust": {
+          "f1": 0.36619718309859156,
+          "precision": 0.3333333333333333,
+          "recall": 0.40625,
+          "support": 32
+        },
+        "fearful": {
+          "f1": 0.36363636363636365,
+          "precision": 0.6666666666666666,
+          "recall": 0.25,
+          "support": 32
+        },
+        "happy": {
+          "f1": 0.1568627450980392,
+          "precision": 0.21052631578947367,
+          "recall": 0.125,
+          "support": 32
+        },
+        "neutral": {
+          "f1": 0.391304347826087,
+          "precision": 0.3,
+          "recall": 0.5625,
+          "support": 16
+        },
+        "sad": {
+          "f1": 0.10526315789473684,
+          "precision": 0.3333333333333333,
+          "recall": 0.0625,
+          "support": 32
+        },
+        "surprised": {
+          "f1": 0.8,
+          "precision": 0.6666666666666666,
+          "recall": 1.0,
+          "support": 32
+        }
+      },
+      "weighted": {
+        "f1": 0.4214366722575506,
+        "precision": 0.4619163292847503,
+        "recall": 0.4666666666666667
+      }
+    },
+    "recording_count": 240,
+    "true_distribution": {
+      "angry": 32,
+      "calm": 32,
+      "disgust": 32,
+      "fearful": 32,
+      "happy": 32,
+      "neutral": 16,
+      "sad": 32,
+      "surprised": 32
+    }
+  },
+  "test_confusion_matrix": [
+    [
+      9,
+      0,
+      3,
+      0,
+      1,
+      0,
+      2,
+      1
+    ],
+    [
+      5,
+      17,
+      0,
+      0,
+      0,
+      0,
+      10,
+      0
+    ],
+    [
+      5,
+      0,
+      4,
+      3,
+      7,
+      4,
+      1,
+      8
+    ],
+    [
+      7,
+      9,
+      1,
+      2,
+      4,
+      0,
+      9,
+      0
+    ],
+    [
+      1,
+      0,
+      1,
+      0,
+      27,
+      0,
+      0,
+      3
+    ],
+    [
+      3,
+      0,
+      7,
+      0,
+      7,
+      8,
+      4,
+      3
+    ],
+    [
+      0,
+      0,
+      3,
+      1,
+      14,
+      0,
+      13,
+      1
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      32
+    ]
+  ],
+  "test_figure_relative_path": "ml/reports/figures/cnn_reduced_regularization_test_confusion_matrix.png",
+  "training_or_tuning_after_test": false
+}
