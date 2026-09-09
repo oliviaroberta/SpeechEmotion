@@ -49,6 +49,16 @@ Inputs must be readable PCM_16 WAV recordings with one or two channels and a pos
 
 The JSON result contains `emotion`, `class_index`, `confidence`, `probabilities`, and frozen model identity/version fields. Confidence is the selected model's softmax probability; it is not a guarantee that the predicted emotion is correct.
 
+## Backend Development
+
+Run the development API from the project root:
+
+```powershell
+.\.venv\Scripts\python.exe -m uvicorn backend.app.main:app --host 127.0.0.1 --port 8000 --reload
+```
+
+Health endpoint: `http://127.0.0.1:8000/api/v1/health`
+
 ## Proposed System Workflow
 
 1. Collect and organize speech data using the RAVDESS dataset.
@@ -111,5 +121,7 @@ The reduced-regularization CNN improved validation performance beyond the baseli
 The regularized-and-augmented CNN did not meet the fixed promotion threshold, so the reduced-regularization CNN was selected and frozen before opening the final test split.
 
 A frozen-Wav2Vec2 transfer-learning candidate was evaluated on validation actors only. It did not meet the predeclared promotion rule, and it was not evaluated on the final test split.
+
+The FastAPI backend foundation provides a health endpoint only; audio-prediction endpoints and the frontend have not been built.
 
 Model selection used training actors 01-16 and validation actors 17-20. The frozen reduced-regularization/no-dropout CNN was evaluated once on held-out actors 21-24, achieving 46.6667% test accuracy and 0.419553 macro F1. No post-test tuning, model selection, or alternative-model test evaluation was performed.

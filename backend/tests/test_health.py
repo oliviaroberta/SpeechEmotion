@@ -1,0 +1,50 @@
+from __future__ import annotations
+
+import importlib
+import os
+import sys
+import unittest
+from unittest.mock import patch
+
+from fastapi.testclient import TestClient
+
+
+class HealthEndpointTests(unittest.TestCase):
+    def test_health_response_and_openapi_schema(self) -> None:
+        from backend.app.main import API_TITLE, API_VERSION, create_app
+
+        with TestClient(create_app()) as client:
+            response = client.get("/api/v1/health")
+            self.assertEqual(response.status_code, 200)
+            self.assertEqual(response.json(), {"status": "healthy", "service": "speech-emotion-recognition-api", "version": "0.1.0"})
+            schema = client.get("/openapi.json")
+        self.assertEqual(schema.status_code, 200)
+        self.assertEqual(schema.json()["info"], {"title": API_TITLE, "version": API_VERSION})
+        self.assertIn("/api/v1/health", schema.json()["paths"])
+
+    def test_cors_uses_configured_allowlist(self) -> None:
+        with patch.dict(os.environ, {"SER_ALLOWED_ORIGINS": "https://example.test, http://localhost:5173"}, clear=False):
+            from backend.app import main
+
+            application = main.create_app()
+        with TestClient(application) as client:
+            response = client.options(
+                "/api/v1/health",
+                headers={"Origin": "https://example.test", "Access-Control-Request-Method": "GET"},
+            )
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.headers["access-control-allow-origin"], "https://example.test")
+
+    def test_health_import_path_does_not_load_prediction_model(self) -> None:
+        sys.modules.pop("predict_audio", None)
+        sys.modules.pop("ml.src.predict_audio", None)
+        module = importlib.import_module("backend.app.main")
+        with TestClient(module.create_app()) as client:
+            self.assertEqual(client.get("/api/v1/health").status_code, 200)
+        self.assertNotIn("predict_audio", sys.modules)
+        self.assertNotIn("ml.src.predict_audio", sys.modules)
+        self.assertNotIn("tensorflow", module.__dict__)
+
+
+if __name__ == "__main__":
+    unittest.main()

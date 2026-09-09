@@ -1,0 +1,5 @@
+# FastAPI backend foundation for the Windows Python 3.11 project environment.
+fastapi==0.115.12
+uvicorn[standard]==0.34.0
+python-multipart==0.0.20
+httpx==0.28.1
