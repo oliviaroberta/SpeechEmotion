@@ -79,6 +79,14 @@ npm run dev
 
 Run frontend checks with `npm test`, `npm run lint`, and `npm run build`. The current interface validates WAV selection locally; API upload and microphone recording are intentionally not connected yet.
 
+For local end-to-end WAV predictions, run the API in one PowerShell window:
+
+```powershell
+.\.venv\Scripts\python.exe -m uvicorn backend.app.main:app --host 127.0.0.1 --port 8000
+```
+
+Then run `npm run dev` from `frontend` in a second window. The frontend uses `VITE_API_BASE_URL`, which defaults to `http://127.0.0.1:8000`; see `frontend/.env.example`. WAV upload is connected, while microphone recording remains intentionally unimplemented.
+
 ## Proposed System Workflow
 
 1. Collect and organize speech data using the RAVDESS dataset.
