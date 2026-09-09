@@ -37,6 +37,18 @@ Librosa is intentionally pinned to `0.11.0` because this project uses Python 3.1
 
 The official dataset source and the planned speaker-independent split strategy are documented in [docs/dataset-plan.md](docs/dataset-plan.md).
 
+## Local Inference
+
+Run one prediction with the frozen selected CNN:
+
+```powershell
+.\.venv\Scripts\python.exe -m ml.src.predict_audio ml\data\raw\ravdess\extracted\Actor_01\03-01-05-01-01-01-01.wav
+```
+
+Inputs must be readable PCM_16 WAV recordings with one or two channels and a positive sample rate. The frozen pipeline handles stereo averaging where needed, resampling, silence trimming, fixed-length padding or cropping, Log-Mel extraction, and the training-only normalization statistics.
+
+The JSON result contains `emotion`, `class_index`, `confidence`, `probabilities`, and frozen model identity/version fields. Confidence is the selected model's softmax probability; it is not a guarantee that the predicted emotion is correct.
+
 ## Proposed System Workflow
 
 1. Collect and organize speech data using the RAVDESS dataset.
