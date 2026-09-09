@@ -67,6 +67,18 @@ curl.exe -X POST http://127.0.0.1:8000/api/v1/predict -F "file=@path\to\recordin
 
 The response includes `emotion`, `class_index`, `confidence`, eight class `probabilities`, and `model.identifier` and `model.version`. The endpoint accepts files up to 10 MiB by default; set `SER_MAX_AUDIO_BYTES` to configure a different positive limit.
 
+## Frontend Development
+
+Start the React and TypeScript interface from the project root:
+
+```powershell
+cd frontend
+npm install
+npm run dev
+```
+
+Run frontend checks with `npm test`, `npm run lint`, and `npm run build`. The current interface validates WAV selection locally; API upload and microphone recording are intentionally not connected yet.
+
 ## Proposed System Workflow
 
 1. Collect and organize speech data using the RAVDESS dataset.
