@@ -59,6 +59,14 @@ Run the development API from the project root:
 
 Health endpoint: `http://127.0.0.1:8000/api/v1/health`
 
+Submit one WAV recording using the multipart field `file`:
+
+```powershell
+curl.exe -X POST http://127.0.0.1:8000/api/v1/predict -F "file=@path\to\recording.wav"
+```
+
+The response includes `emotion`, `class_index`, `confidence`, eight class `probabilities`, and `model.identifier` and `model.version`. The endpoint accepts files up to 10 MiB by default; set `SER_MAX_AUDIO_BYTES` to configure a different positive limit.
+
 ## Proposed System Workflow
 
 1. Collect and organize speech data using the RAVDESS dataset.
