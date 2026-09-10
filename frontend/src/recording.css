@@ -1,0 +1,10 @@
+.record-panel { padding: 26px; }
+.recording-stage { align-items: center; background: #f6f8fc; border: 1px solid #e1e6f2; border-radius: 7px; color: #51607a; display: flex; gap: 9px; margin: 22px 0 14px; min-height: 78px; padding: 16px; }
+.recording-stage p { margin: 0; line-height: 1.5; }
+.recording-dot { background: #c7394d; border-radius: 50%; height: 10px; width: 10px; }
+.record-controls { display: flex; flex-wrap: wrap; gap: 10px; }
+.record-controls button { align-items: center; display: inline-flex; gap: 7px; justify-content: center; }
+.stop-button, .secondary-button { border: 1px solid #cfd8eb; border-radius: 6px; color: #263b70; background: #fff; font-weight: 750; padding: 10px 14px; }
+.stop-button { border-color: #f0bbc3; color: #9b2739; }
+.record-panel .form-error { margin: 0 0 14px; }
+@media (max-width: 800px) { .record-panel { padding: 20px; }.record-controls > button { width: 100%; } }
