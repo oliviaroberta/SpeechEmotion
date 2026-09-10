@@ -87,7 +87,7 @@ For local end-to-end WAV predictions, run the API in one PowerShell window:
 
 Then run `npm run dev` from `frontend` in a second window. The frontend uses `VITE_API_BASE_URL`, which defaults to `http://127.0.0.1:8000`; see `frontend/.env.example`. WAV upload and browser-recorded WAV analysis use the same prediction endpoint.
 
-The browser microphone workflow requests permission only after selecting the Record tab and clicking **Start recording**. It captures up to 15 seconds, requires at least one second, creates an in-memory mono PCM-16 WAV, and submits it through the same prediction endpoint when **Analyse recording** is selected. Microphone APIs require a secure context: use `localhost` during development or HTTPS when deployed. The requested constraints prefer mono capture and disable automatic gain control, although browsers and devices may apply supported constraints differently.
+The browser microphone workflow requests permission only after selecting the Record tab and clicking **Start recording**. It captures up to 15 seconds, requires at least one second, creates an in-memory mono PCM-16 WAV, and submits it through the same prediction endpoint when **Analyse recording** is selected. Empty, non-finite, silent, and effectively silent captures are rejected locally before upload. Microphone APIs require a secure context: use `localhost` during development or HTTPS when deployed. The requested constraints prefer mono capture and disable automatic gain control, although browsers and devices may apply supported constraints differently.
 
 ## Proposed System Workflow
 
