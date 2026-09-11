@@ -1,6 +1,6 @@
 # Detecting Individuals' Emotions Based on Voice Using Artificial Intelligence
 
-This project is a final-year project focused on recognizing human emotions from speech using artificial intelligence. The repository currently contains the initial project structure and the verified core machine-learning/audio environment.
+This project is a final-year project focused on recognizing human emotions from speech using artificial intelligence. It contains a frozen CNN inference pipeline, FastAPI prediction API, and React interface for WAV upload and browser microphone recording.
 
 ## Prerequisites and Setup
 
@@ -67,6 +67,28 @@ curl.exe -X POST http://127.0.0.1:8000/api/v1/predict -F "file=@path\to\recordin
 
 The response includes `emotion`, `class_index`, `confidence`, eight class `probabilities`, and `model.identifier` and `model.version`. The endpoint accepts files up to 10 MiB by default; set `SER_MAX_AUDIO_BYTES` to configure a different positive limit.
 
+## Production Preparation
+
+The repository tracks only the frozen inference bundle needed at runtime:
+
+- `ml/artifacts/inference/cnn_reduced_regularization.keras`
+- `ml/artifacts/inference/normalization.npz`
+- `ml/artifacts/inference/manifest.json`
+
+Install the minimal CPU inference runtime with Python 3.11:
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install -r requirements\runtime.txt
+```
+
+Set `SER_ENVIRONMENT=production` and provide a comma-separated `ALLOWED_ORIGINS` value containing the deployed frontend origins. Wildcard CORS origins are not allowed. Set `PORT` to the hosting platform's port and run one TensorFlow worker without reload:
+
+```text
+uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT --workers 1
+```
+
+The included `Procfile` records that production start command for Linux-compatible process hosts. The frontend uses `VITE_API_BASE_URL`; set it to the public backend origin at build time. `frontend/.env.example` contains a non-secret example URL, and `frontend/vercel.json` provides the Vite single-page-app fallback when the frontend project root is deployed to Vercel.
+
 ## Frontend Development
 
 Start the React and TypeScript interface from the project root:
@@ -77,7 +99,7 @@ npm install
 npm run dev
 ```
 
-Run frontend checks with `npm test`, `npm run lint`, and `npm run build`. The current interface validates WAV selection locally; API upload and microphone recording are intentionally not connected yet.
+Run frontend checks with `npm test`, `npm run lint`, and `npm run build`. The interface validates WAV selection locally and sends both uploads and browser-recorded WAV files to the configured prediction API only after analysis is requested.
 
 For local end-to-end WAV predictions, run the API in one PowerShell window:
 
@@ -110,6 +132,12 @@ The browser microphone workflow requests permission only after selecting the Rec
 
 These are initial technical decisions and may be refined after experimentation.
 
+## Model Limitations and Dataset Attribution
+
+The frozen selected CNN achieved `46.6667%` accuracy on the final held-out RAVDESS test actors. Natural microphone speech may be less reliable because of accent, environment, equipment, background noise, and dataset differences. Predictions are estimates, not guaranteed emotion assessments.
+
+This project uses the Ryerson Audio-Visual Database of Emotional Speech and Song (RAVDESS), created by Steven R. Livingstone and Frank A. Russo. Cite: Livingstone, S. R., & Russo, F. A. (2018), *PLOS ONE*, 13(5), e0196391, https://doi.org/10.1371/journal.pone.0196391. RAVDESS is available under CC BY-NC-SA 4.0; attribution and non-commercial licence obligations should be reviewed before reuse. This note is not legal advice.
+
 ## Project Structure
 
 ```text
@@ -136,22 +164,6 @@ speech-emotion-recognition-system/
 
 ## Current Status
 
-The finalized reusable preprocessing pipeline is implemented and all 1,440 recordings pass in-memory validation. Raw audio remains unchanged and ignored by Git where appropriate. No processed audio, features, or trained models exist yet; feature extraction and model training have not started. No backend or frontend application functionality has been implemented yet.
+The frozen reduced-regularization/no-dropout CNN is packaged for CPU inference together with its training-only normalization statistics. The FastAPI API supports health and WAV prediction endpoints, and the React interface supports WAV upload and browser microphone recording. Raw RAVDESS audio remains ignored and unchanged.
 
-Controlled waveform, log-Mel, and MFCC feature previews have been generated for one consistent training example from each emotion; these are visual previews only, not saved feature datasets.
-
-A fixed baseline SVM candidate has been trained and evaluated on validation actors; it is not the final selected model.
-
-A speaker-grouped SVM tuning experiment did not improve validation performance; the original baseline remains the leading SVM candidate and the test split remains untouched.
-
-The first baseline CNN was trained and evaluated on validation actors; it did not outperform the leading SVM, and the final test split remains untouched.
-
-The reduced-regularization CNN improved validation performance beyond the baseline SVM; it remains a validation-only candidate and the final test split is untouched.
-
-The regularized-and-augmented CNN did not meet the fixed promotion threshold, so the reduced-regularization CNN was selected and frozen before opening the final test split.
-
-A frozen-Wav2Vec2 transfer-learning candidate was evaluated on validation actors only. It did not meet the predeclared promotion rule, and it was not evaluated on the final test split.
-
-The FastAPI backend foundation provides a health endpoint only; audio-prediction endpoints and the frontend have not been built.
-
-Model selection used training actors 01-16 and validation actors 17-20. The frozen reduced-regularization/no-dropout CNN was evaluated once on held-out actors 21-24, achieving 46.6667% test accuracy and 0.419553 macro F1. No post-test tuning, model selection, or alternative-model test evaluation was performed.
+Model selection used actors 01-16 for training and 17-20 for validation. The selected CNN was evaluated once on held-out actors 21-24, achieving `46.6667%` test accuracy and `0.419553` macro F1. No post-test tuning, model selection, or alternative-model test evaluation was performed.

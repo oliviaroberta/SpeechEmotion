@@ -83,3 +83,10 @@ ml/reports/**/*.html
 *.pt
 *.pth
 *.ckpt
+
+# Tracked frozen inference bundle for deployment only
+!ml/artifacts/
+!ml/artifacts/inference/
+!ml/artifacts/inference/cnn_reduced_regularization.keras
+!ml/artifacts/inference/normalization.npz
+!ml/artifacts/inference/manifest.json

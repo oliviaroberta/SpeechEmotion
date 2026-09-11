@@ -26,8 +26,9 @@ except ImportError:  # pragma: no cover - exercised by the existing source-path 
     from cnn_model import EXPECTED_CLASSES
 
 
-MODEL_PATH = ROOT / "ml" / "models" / "cnn" / "cnn_reduced_regularization.keras"
-NORMALIZATION_PATH = ROOT / "ml" / "data" / "processed" / "cnn_baseline" / "normalization.npz"
+INFERENCE_ARTIFACT_DIR = ROOT / "ml" / "artifacts" / "inference"
+MODEL_PATH = INFERENCE_ARTIFACT_DIR / "cnn_reduced_regularization.keras"
+NORMALIZATION_PATH = INFERENCE_ARTIFACT_DIR / "normalization.npz"
 MODEL_CONFIG_PATH = ROOT / "ml" / "config" / "cnn_reduced_regularization.json"
 MODEL_IDENTIFIER = "cnn_reduced_regularization_no_dropout"
 EXPECTED_FEATURE_SHAPE = (64, 219, 1)

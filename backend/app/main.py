@@ -7,6 +7,7 @@ import tempfile
 import wave
 from pathlib import Path
 from typing import Annotated
+from urllib.parse import urlparse
 
 from fastapi import Depends, FastAPI, File, HTTPException, UploadFile, status
 from fastapi.concurrency import run_in_threadpool
@@ -38,10 +39,26 @@ class HealthResponse(BaseModel):
 
 
 def get_allowed_origins() -> list[str]:
-    """Read a comma-separated CORS allowlist with safe local development defaults."""
-    configured = os.environ.get("SER_ALLOWED_ORIGINS", "")
-    origins = [origin.strip() for origin in configured.split(",") if origin.strip()]
-    return origins or list(DEFAULT_ALLOWED_ORIGINS)
+    """Read a validated CORS allowlist with development-only local defaults."""
+    configured = os.environ.get("ALLOWED_ORIGINS") or os.environ.get("SER_ALLOWED_ORIGINS", "")
+    origins = [origin.strip().rstrip("/") for origin in configured.split(",") if origin.strip()]
+    if not origins:
+        return [] if os.environ.get("SER_ENVIRONMENT", "development").lower() == "production" else list(DEFAULT_ALLOWED_ORIGINS)
+    for origin in origins:
+        parsed = urlparse(origin)
+        if (
+            origin == "*"
+            or parsed.scheme not in {"http", "https"}
+            or not parsed.netloc
+            or parsed.path not in {"", "/"}
+            or parsed.params
+            or parsed.query
+            or parsed.fragment
+            or parsed.username
+            or parsed.password
+        ):
+            raise ValueError("ALLOWED_ORIGINS must contain comma-separated http(s) origins without paths or credentials.")
+    return origins
 
 
 def get_max_audio_bytes() -> int:

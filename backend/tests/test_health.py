@@ -35,6 +35,17 @@ class HealthEndpointTests(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.headers["access-control-allow-origin"], "https://example.test")
 
+    def test_production_cors_requires_explicit_valid_origins(self) -> None:
+        with patch.dict(os.environ, {"SER_ENVIRONMENT": "production"}, clear=False):
+            from backend.app import main
+
+            self.assertEqual(main.get_allowed_origins(), [])
+        with patch.dict(os.environ, {"ALLOWED_ORIGINS": "https://frontend.example.com"}, clear=False):
+            self.assertEqual(main.get_allowed_origins(), ["https://frontend.example.com"])
+        with patch.dict(os.environ, {"ALLOWED_ORIGINS": "*"}, clear=False):
+            with self.assertRaises(ValueError):
+                main.get_allowed_origins()
+
     def test_health_import_path_does_not_load_prediction_model(self) -> None:
         sys.modules.pop("predict_audio", None)
         sys.modules.pop("ml.src.predict_audio", None)

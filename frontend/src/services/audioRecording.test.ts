@@ -15,11 +15,8 @@ describe('browser WAV encoding', () => {
     const secondBytes = new Uint8Array(secondBuffer)
     expect(firstBytes.slice(44)).not.toEqual(new Uint8Array(firstBytes.length - 44))
     expect(Array.from(firstBytes)).not.toEqual(Array.from(secondBytes))
-    const hash = async (bytes: Uint8Array) => {
-      const input = bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength) as ArrayBuffer
-      return Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', input))).map((value) => value.toString(16).padStart(2, '0')).join('')
-    }
-    expect(await hash(firstBytes)).not.toBe(await hash(secondBytes))
+    const fingerprint = (bytes: Uint8Array) => bytes.reduce((hash, value) => Math.imul(hash ^ value, 16777619) >>> 0, 2166136261).toString(16)
+    expect(fingerprint(firstBytes)).not.toBe(fingerprint(secondBytes))
     const firstQuality = measureRecording(first, 16000)
     const secondQuality = measureRecording(second, 16000)
     expect(firstQuality.sampleCount).toBe(16000)

@@ -1,0 +1,8 @@
+# Minimal Python 3.11 runtime dependencies for FastAPI CPU inference.
+fastapi==0.115.12
+uvicorn[standard]==0.34.0
+python-multipart==0.0.20
+tensorflow==2.21.0
+librosa==0.11.0
+numpy==2.4.6
+soundfile==0.14.0
