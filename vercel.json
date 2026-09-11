@@ -10,19 +10,7 @@
         "ml/config/cnn_reduced_regularization.json",
         "ml/src/**"
       ],
-      "excludeFiles": [
-        "backend/tests/**",
-        "ml/tests/**",
-        "ml/data/raw/**",
-        "ml/data/processed/**",
-        "ml/metadata/**",
-        "ml/models/**",
-        "ml/notebooks/**",
-        "ml/reports/**",
-        "frontend/**",
-        "**/.cache/**",
-        "**/__pycache__/**"
-      ]
+      "excludeFiles": "{backend/tests/**,ml/tests/**,ml/data/raw/**,ml/data/processed/**,ml/metadata/**,ml/models/**,ml/notebooks/**,ml/reports/**,frontend/**,**/.cache/**,**/__pycache__/**}"
     }
   },
   "rewrites": [
