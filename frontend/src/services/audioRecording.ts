@@ -1,6 +1,6 @@
 export const MAX_RECORDING_SECONDS = 15
 export const MIN_RECORDING_SECONDS = 1
-export const MAX_AUDIO_BYTES = 10 * 1024 * 1024
+export const MAX_AUDIO_BYTES = 4 * 1024 * 1024
 export const MIN_PEAK_AMPLITUDE = 0.002
 export const MIN_RMS_AMPLITUDE = 0.0005
 
@@ -68,7 +68,7 @@ export class RecordingSession {
       this.lastQuality = measureRecording(samples, this.sampleRate)
       validateRecordingQuality(this.lastQuality)
       const wav = encodeMonoPcm16Wav(samples, this.sampleRate)
-      if (wav.size > MAX_AUDIO_BYTES) throw new RecordingError('The recorded WAV exceeds the 10 MiB limit.')
+      if (wav.size > MAX_AUDIO_BYTES) throw new RecordingError('The recorded WAV exceeds the 4 MiB limit.')
       return new File([wav], 'microphone-recording.wav', { type: 'audio/wav' })
     } finally {
       await this.cleanup()

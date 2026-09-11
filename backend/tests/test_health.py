@@ -56,6 +56,12 @@ class HealthEndpointTests(unittest.TestCase):
         self.assertNotIn("ml.src.predict_audio", sys.modules)
         self.assertNotIn("tensorflow", module.__dict__)
 
+    def test_vercel_entrypoint_exports_the_fastapi_application(self) -> None:
+        from api.index import app
+        from backend.app.main import app as backend_app
+
+        self.assertIs(app, backend_app)
+
 
 if __name__ == "__main__":
     unittest.main()

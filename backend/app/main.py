@@ -26,7 +26,7 @@ from .schemas import PredictionResponse
 API_TITLE = "Speech Emotion Recognition API"
 API_VERSION = "0.1.0"
 DEFAULT_ALLOWED_ORIGINS = ("http://localhost:5173", "http://127.0.0.1:5173")
-DEFAULT_MAX_AUDIO_BYTES = 10 * 1024 * 1024
+DEFAULT_MAX_AUDIO_BYTES = 4 * 1024 * 1024
 UPLOAD_CHUNK_BYTES = 64 * 1024
 
 

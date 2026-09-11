@@ -10,7 +10,7 @@ from unittest.mock import patch
 
 from fastapi.testclient import TestClient
 
-from backend.app.main import create_app, get_prediction_function
+from backend.app.main import DEFAULT_MAX_AUDIO_BYTES, create_app, get_max_audio_bytes, get_prediction_function
 from backend.app.prediction_service import (
     PredictionArtifactsUnavailableError,
     PredictionInputUnavailableError,
@@ -72,7 +72,10 @@ class PredictionEndpointTests(unittest.TestCase):
         self.assertEqual(self.post_wav(b"not a WAV file").status_code, 415)
 
     def test_malformed_wav_and_oversized_upload_are_rejected(self) -> None:
+        self.assertEqual(DEFAULT_MAX_AUDIO_BYTES, 4 * 1024 * 1024)
+        self.assertEqual(get_max_audio_bytes(), 4 * 1024 * 1024)
         self.assertEqual(self.post_wav(b"RIFF\x00\x00\x00\x00WAVEbroken").status_code, 400)
+        self.assertEqual(self.post_wav(wav_bytes() + (b"\x00" * DEFAULT_MAX_AUDIO_BYTES)).status_code, 413)
         with patch.dict(os.environ, {"SER_MAX_AUDIO_BYTES": "20"}, clear=False):
             self.assertEqual(self.post_wav(wav_bytes()).status_code, 413)
 

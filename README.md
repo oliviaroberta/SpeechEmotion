@@ -65,7 +65,7 @@ Submit one WAV recording using the multipart field `file`:
 curl.exe -X POST http://127.0.0.1:8000/api/v1/predict -F "file=@path\to\recording.wav"
 ```
 
-The response includes `emotion`, `class_index`, `confidence`, eight class `probabilities`, and `model.identifier` and `model.version`. The endpoint accepts files up to 10 MiB by default; set `SER_MAX_AUDIO_BYTES` to configure a different positive limit.
+The response includes `emotion`, `class_index`, `confidence`, eight class `probabilities`, and `model.identifier` and `model.version`. The endpoint accepts files up to 4 MiB by default; set `SER_MAX_AUDIO_BYTES` to configure a different positive limit.
 
 ## Production Preparation
 
@@ -88,6 +88,24 @@ uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT --workers 1
 ```
 
 The included `Procfile` records that production start command for Linux-compatible process hosts. The frontend uses `VITE_API_BASE_URL`; set it to the public backend origin at build time. `frontend/.env.example` contains a non-secret example URL, and `frontend/vercel.json` provides the Vite single-page-app fallback when the frontend project root is deployed to Vercel.
+
+### Vercel Projects
+
+The backend and frontend are separate Vercel projects from this repository:
+
+- Backend project Root Directory: repository root. `api/index.py` exports `backend.app.main:app`; root `vercel.json` configures a 300-second function duration and includes only the frozen inference artifacts and required Python source.
+- Frontend project Root Directory: `frontend`. Its existing `frontend/vercel.json` keeps client-side routing separate from the FastAPI function.
+
+The root `.python-version` requests Python 3.12 for Vercel only; local development remains on the existing Python 3.11 `.venv`. Configure these backend variables in Vercel:
+
+```text
+SER_ENVIRONMENT=production
+ALLOWED_ORIGINS=https://your-frontend.vercel.app
+SER_MAX_AUDIO_BYTES=4194304
+VERCEL_SUPPORT_LARGE_FUNCTIONS=1
+```
+
+Configure `VITE_API_BASE_URL=https://your-backend.vercel.app` in the frontend project. Vercel Functions cap request bodies at 4.5 MB, so this application uses a conservative 4 MiB upload limit for both browser validation and backend enforcement. A 15-second mono PCM-16 microphone WAV remains below this limit at common browser sample rates. TensorFlow may exceed Vercel's standard Python bundle allowance, so `VERCEL_SUPPORT_LARGE_FUNCTIONS=1` might be required. The configuration does not guarantee that the backend will fit or build; verify that in a Vercel build before deployment.
 
 ## Frontend Development
 

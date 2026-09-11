@@ -1,4 +1,4 @@
-# Minimal Python 3.11 runtime dependencies for FastAPI CPU inference.
+# Minimal pinned CPU inference runtime for local Python 3.11 and Vercel Python 3.12.
 fastapi==0.115.12
 uvicorn[standard]==0.34.0
 python-multipart==0.0.20

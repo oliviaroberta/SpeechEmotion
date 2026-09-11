@@ -1,0 +1,31 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "functions": {
+    "api/index.py": {
+      "maxDuration": 300,
+      "includeFiles": [
+        "ml/artifacts/inference/**",
+        "ml/config/preprocessing.json",
+        "ml/config/features.json",
+        "ml/config/cnn_reduced_regularization.json",
+        "ml/src/**"
+      ],
+      "excludeFiles": [
+        "backend/tests/**",
+        "ml/tests/**",
+        "ml/data/raw/**",
+        "ml/data/processed/**",
+        "ml/metadata/**",
+        "ml/models/**",
+        "ml/notebooks/**",
+        "ml/reports/**",
+        "frontend/**",
+        "**/.cache/**",
+        "**/__pycache__/**"
+      ]
+    }
+  },
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/api/index.py" }
+  ]
+}

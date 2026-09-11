@@ -10,7 +10,7 @@ import './recording.css'
 
 type SourceTab = 'upload' | 'record'
 type Phase = 'idle' | 'selected' | 'analysing' | 'success' | 'error'
-const validate = (file: File) => !file.name.toLowerCase().endsWith('.wav') ? 'Choose a WAV audio file to continue.' : file.size === 0 ? 'The selected WAV file is empty.' : file.size > MAX_AUDIO_BYTES ? 'The selected WAV file exceeds the 10 MiB limit.' : null
+const validate = (file: File) => !file.name.toLowerCase().endsWith('.wav') ? 'Choose a WAV audio file to continue.' : file.size === 0 ? 'The selected WAV file is empty.' : file.size > MAX_AUDIO_BYTES ? 'The selected WAV file exceeds the 4 MiB limit.' : null
 
 function App() {
   const [tab, setTab] = useState<SourceTab>('upload'); const [file, setFile] = useState<File | null>(null); const [error, setError] = useState<string | null>(null); const [result, setResult] = useState<PredictionResult | undefined>(); const [phase, setPhase] = useState<Phase>('idle')
