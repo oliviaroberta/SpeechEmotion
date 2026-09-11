@@ -1,1 +1,8 @@
--r requirements/runtime.txt
+# Minimal pinned CPU inference runtime for local Python 3.11 and Vercel Python 3.12.
+fastapi==0.115.12
+uvicorn[standard]==0.34.0
+python-multipart==0.0.20
+tensorflow==2.21.0
+librosa==0.11.0
+numpy==2.4.6
+soundfile==0.14.0
