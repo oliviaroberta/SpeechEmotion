@@ -1,13 +1,13 @@
 .record-panel { padding: 28px; }
-.recording-stage { align-items: center; background: #f7f9fd; border: 1px solid #dce4f0; border-radius: 7px; color: #52617a; display: flex; gap: 9px; margin: 23px 0 14px; min-height: 80px; padding: 16px; }
+.recording-stage { align-items: center; background: #fff6f9; border: 1px solid #efd6e1; border-radius: 7px; color: #735466; display: flex; gap: 9px; margin: 23px 0 14px; min-height: 80px; padding: 16px; }
 .recording-stage p { line-height: 1.5; margin: 0; }
-.recording-dot { background: #bd3349; border-radius: 50%; box-shadow: 0 0 0 4px #fdecef; height: 9px; width: 9px; }
+.recording-dot { background: #c53667; border-radius: 50%; box-shadow: 0 0 0 4px #fde7ef; height: 9px; width: 9px; }
 .record-controls { display: flex; flex-wrap: wrap; gap: 10px; }
 .record-controls button { align-items: center; display: inline-flex; gap: 7px; justify-content: center; }
-.stop-button, .secondary-button { background: #fff; border: 1px solid #cbd6e8; border-radius: 6px; color: #27406f; font-weight: 800; padding: 10px 14px; }
-.secondary-button:hover { background: #f2f6ff; border-color: #aebfe0; }
-.stop-button { border-color: #e9b7c0; color: #982d41; }
-.stop-button:hover { background: #fff3f4; }
+.stop-button, .secondary-button { background: #fff; border: 1px solid #e4bdce; border-radius: 6px; color: #7c3154; font-weight: 800; padding: 10px 14px; }
+.secondary-button:hover { background: #fff2f7; border-color: #d99bb5; }
+.stop-button { border-color: #e5adb9; color: #a42c4e; }
+.stop-button:hover { background: #fff1f4; }
 .record-panel .form-error { margin: 0 0 14px; }
 
 @media (max-width: 800px) {

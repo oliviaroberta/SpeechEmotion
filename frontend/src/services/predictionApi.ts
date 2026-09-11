@@ -25,7 +25,7 @@ function parsePrediction(payload: unknown): PredictionResult {
 
 function messageForStatus(status: number, detail: unknown): string {
   if (status === 400) return 'The WAV audio could not be processed. Choose another recording and try again.'
-  if (status === 413) return 'The WAV file exceeds the upload size limit of 10 MiB.'
+  if (status === 413) return 'This WAV file is larger than the 4 MiB upload size limit.'
   if (status === 415) return 'Only valid WAV audio files are supported.'
   if (status === 503) return 'The prediction service is temporarily unavailable. Please try again shortly.'
   if (status === 500) return 'The prediction service encountered an unexpected error. Please try again.'
