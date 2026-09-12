@@ -100,7 +100,7 @@ The root `.python-version` requests Python 3.12 for Vercel only; local developme
 
 ```text
 SER_ENVIRONMENT=production
-ALLOWED_ORIGINS=https://your-frontend.vercel.app
+ALLOWED_ORIGINS=https://speech-emotion-six.vercel.app,http://localhost:5173
 SER_MAX_AUDIO_BYTES=4194304
 VERCEL_SUPPORT_LARGE_FUNCTIONS=1
 ```

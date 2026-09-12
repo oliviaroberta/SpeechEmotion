@@ -23,17 +23,23 @@ class HealthEndpointTests(unittest.TestCase):
         self.assertIn("/api/v1/health", schema.json()["paths"])
 
     def test_cors_uses_configured_allowlist(self) -> None:
-        with patch.dict(os.environ, {"SER_ALLOWED_ORIGINS": "https://example.test, http://localhost:5173"}, clear=False):
+        with patch.dict(os.environ, {"ALLOWED_ORIGINS": "https://speech-emotion-six.vercel.app, http://localhost:5173"}, clear=False):
             from backend.app import main
 
             application = main.create_app()
         with TestClient(application) as client:
             response = client.options(
-                "/api/v1/health",
-                headers={"Origin": "https://example.test", "Access-Control-Request-Method": "GET"},
+                "/api/v1/predict",
+                headers={
+                    "Origin": "https://speech-emotion-six.vercel.app",
+                    "Access-Control-Request-Method": "POST",
+                    "Access-Control-Request-Headers": "content-type",
+                },
             )
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.headers["access-control-allow-origin"], "https://example.test")
+        self.assertEqual(response.headers["access-control-allow-origin"], "https://speech-emotion-six.vercel.app")
+        self.assertIn("POST", response.headers["access-control-allow-methods"])
+        self.assertIn("content-type", response.headers["access-control-allow-headers"])
 
     def test_production_cors_requires_explicit_valid_origins(self) -> None:
         with patch.dict(os.environ, {"SER_ENVIRONMENT": "production"}, clear=False):
