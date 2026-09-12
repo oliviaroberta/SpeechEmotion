@@ -1,7 +1,6 @@
 .venv/
 .cache/
 backend/tests/
-frontend/
 ml/data/raw/
 ml/data/processed/
 ml/metadata/
